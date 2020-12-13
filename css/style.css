@@ -1,10 +1,24 @@
 button {
 	border: 0px;
 	border-radius: 5px;
-	color: #FFF
+	color: #FFF;
+	margin: 0;
+	padding: 0% 5%;
+	font-size: 1.2em;
+	white-space: nowrap;
+
+
 }
 
 #A1 {
 
 }
 
+
+#line {
+	height: 4px;
+	width: 110%;
+	margin: 0% -5%;
+	border-radius: 0px 0px 5px 5px;
+	background: yellow
+}
