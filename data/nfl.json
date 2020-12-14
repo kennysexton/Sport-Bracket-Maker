@@ -41,8 +41,8 @@ data = [
     "abr": "CAR",
     "conf": "NFC",
     "div": "South",
-    "cPrim": "#00338D",
-    "cSecn": "#C60C30",
+    "cPrim": "#0085CA",
+    "cSecn": "#101820",
 
   },
   {
@@ -276,8 +276,8 @@ data = [
     "abr": "TEN",
     "conf": "AFC",
     "div": "South",
-    "cPrim": "#0C2340",
-    "cSecn": "#4B92DB",
+    "cPrim": "#4B92DB",
+    "cSecn": "#C8102E",
   },
   {
     "city": "Washington",
