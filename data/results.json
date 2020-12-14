@@ -1,0 +1,20 @@
+results = {
+  "afcRound1":[
+    "Pittsburgh",
+    "Kansas City",
+    "Buffalo",
+    "Tennessee",
+    "Cleveland",
+    "Miami",
+    "Indianapolis",
+  ],
+  "nfcRound1":[
+    "Pittsburgh",
+    "Kansas City",
+    "Buffalo",
+    "Tennessee",
+    "Cleveland",
+    "Miami",
+    "Indianapolis",
+  ],
+}
