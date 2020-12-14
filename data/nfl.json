@@ -244,15 +244,6 @@ data = [
     "cSecn": "#FFB612",
   },
   {
-    "city": "Seattle",
-    "name": "Seahawks",
-    "abr": "SEA",
-    "conf": "NFC",
-    "div": "West",
-    "cPrim": "#D3BC8D",
-    "cSecn": "#69BE28",
-  },
-  {
     "city": "San Francisco",
     "name": "49ers",
     "abr": "SF",
@@ -260,6 +251,15 @@ data = [
     "div": "West",
     "cPrim": "#AA0000",
     "cSecn": "#B3995D",
+  },
+  {
+    "city": "Seattle",
+    "name": "Seahawks",
+    "abr": "SEA",
+    "conf": "NFC",
+    "div": "West",
+    "cPrim": "#D3BC8D",
+    "cSecn": "#69BE28",
   },
   {
     "city": "Tampa Bay",

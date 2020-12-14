@@ -8,12 +8,9 @@ button {
 	white-space: nowrap;
 }
 
-
-
 #line {
 	height: 4px;
 	width: 110%;
 	margin: 0% -5%;
 	border-radius: 0px 0px 5px 5px;
-	background: yellow
 }
