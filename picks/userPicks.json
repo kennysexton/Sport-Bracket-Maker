@@ -1,0 +1,12 @@
+userPicks = {
+  "afcRound2":[
+    "Kansas City",
+		"Cleveland",
+		"Indianapolis",
+  ],
+  "nfcRound2":[
+    "New Orleans",
+    "Green Bay",
+    "Los Angeles",
+  ],
+}
