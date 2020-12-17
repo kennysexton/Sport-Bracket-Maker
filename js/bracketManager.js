@@ -43,6 +43,18 @@ document.addEventListener("DOMContentLoaded", function(){
 	}
 
 
+	$(function(){
+
+		$(".dropdown-menu").on('click', 'p', function(){
+
+			$(".btn:first-child").text($(this).text());
+			$(".btn:first-child").val($(this).text());
+
+		});
+
+	});
+
+
 });
 
 
