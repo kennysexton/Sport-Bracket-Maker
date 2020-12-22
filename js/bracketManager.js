@@ -46,17 +46,15 @@ document.addEventListener("DOMContentLoaded", function(){
 	$(function(){
 
 		$(".dropdown-menu").on('click', 'p', function(){
+			
+			var dropdownButton = $(this).parent().prev()
 
-			$(".btn:first-child").text($(this).text());
-			$(".btn:first-child").val($(this).text());
+			dropdownButton.text($(this).text());
+			dropdownButton.css('background', $(this).css('background'));
 
 		});
-
 	});
-
-
 });
-
 
 // Grab json files
 function parseJson(jsonObject){

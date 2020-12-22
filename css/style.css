@@ -3,7 +3,7 @@ button {
 	border-radius: 5px;
 	color: #FFF;
 	margin: 0;
-	padding: 0% 5%;
+	padding: 1% 5% 0% 5%;
 	font-size: 1.1em;
 	white-space: nowrap;
 }
