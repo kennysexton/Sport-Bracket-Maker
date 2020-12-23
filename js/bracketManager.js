@@ -4,9 +4,11 @@ document.addEventListener("DOMContentLoaded", function(){
 	var teams = parseJson(data)
 	var result = parseJson(results)
 	var afcRound1Array = document.getElementsByClassName("AFC");
+	var afcRound2Array = document.getElementsByClassName("AFC2");
+	var afcRound3Array = document.getElementsByClassName("AFC3");
+
 	var nfcRound1Array = document.getElementsByClassName("NFC");
 
-	var afcRound2Array = document.getElementsByClassName("AFC2");
 
 	var afcStorageArray = [];
 
@@ -42,15 +44,35 @@ document.addEventListener("DOMContentLoaded", function(){
 		teamStyleLogic(afcStorageArray[seed],afcRound2Array[i])
 	}
 
+	// AFC Round 3 (semi final)
+	for(var i=0; i< afcRound3Array.length; i++){
+		seedString = afcRound3Array[i].getAttribute("seed")
+		
+		//Show all options unless previous has been picked
+		if(seedString.length == 1){
+			seed = parseInt(seedString)
+			teamStyleLogic(afcStorageArray[seed],afcRound3Array[i])
+		} else { // Need to parse{
+				seedArray = seedString.split(",")
+		}
+		
+		
+//		teamStyleLogic(afcStorageArray[seed],afcRound2Array[i])
+	}
+
 
 	$(function(){
 
 		$(".dropdown-menu").on('click', 'p', function(){
-			
+
 			var dropdownButton = $(this).parent().prev()
+			var seed = $(this).attr("seed");
+
+			console.log(seed)
 
 			dropdownButton.text($(this).text());
 			dropdownButton.css('background', $(this).css('background'));
+			dropdownButton.attr('seed', seed)
 
 		});
 	});
