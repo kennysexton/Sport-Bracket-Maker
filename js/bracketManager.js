@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
   var afcRound3Array = document.getElementsByClassName("AFC3");
 
   var nfcRound1Array = document.getElementsByClassName("NFC");
+  
+  var superBowlElement = document.getElementById("super bowl")
 
 
   var afcStorageArray = [];
@@ -52,17 +54,23 @@ document.addEventListener("DOMContentLoaded", function(){
     if(seedString.length == 1){
       seed = parseInt(seedString)
       teamStyleLogic(afcStorageArray[seed],afcRound3Array[i])
-    } else { // Need to parse{
+    } else { // Multiple seeds can obtain this spot
       seedArray = seedString.split(",")
-      teamStyleLogic(afcStorageArray[seedArray[0]],afcRound3Array[i])
-      backwardCheckLogic(seedArray, afcRound3Array[i]);
+      for(var j=0; j<seedArray.length; j++){
+        console.log("seedArray: " + seedArray)
+        if(j == 0){ // No need to append for first option, just change style like round 2
+          teamStyleLogic(afcStorageArray[seedArray[j]],afcRound3Array[i])
+        } else { // every other option must be appended
+          backwardCheckLogic(seedArray[j], afcRound3Array[i]);         
+        }
 
-      // For each element check if previous is completed
+      }
+
     }
-
-
-    //		teamStyleLogic(afcStorageArray[seed],afcRound2Array[i])
   }
+  
+  // Super Bowl
+  
 
 
   $(function(){
@@ -135,11 +143,10 @@ function teamStyleLogic(teamObject, divisionArrayElement){
   firstSeedLine.style.background = teamObject.cSecn;
 }
 
-function backwardCheckLogic(seedArray, dropdownElement){
+function backwardCheckLogic(seed, dropdownElement){
   const appendDropdown = document.createElement("p"); 
   appendDropdown.setAttribute("seed", seed)
   appendDropdown.setAttribute("class", "drop-item AFC3");
-  appendDropdown.innerHTML= "test"
   dropdownElement.insertAdjacentElement('afterend', appendDropdown)
 }
 
