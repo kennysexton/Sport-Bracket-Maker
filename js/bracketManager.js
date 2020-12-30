@@ -8,8 +8,9 @@ document.addEventListener("DOMContentLoaded", function(){
   var afcRound3Array = document.getElementsByClassName("AFC3");
 
   var nfcRound1Array = document.getElementsByClassName("NFC");
-  
-  var superBowlElement = document.getElementById("super bowl")
+
+  var afcChampion = document.getElementById("AFCSB");
+  var nfcChampion = document.getElementById("NFCSB");
 
 
   var afcStorageArray = [];
@@ -57,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function(){
     } else { // Multiple seeds can obtain this spot
       seedArray = seedString.split(",")
       for(var j=0; j<seedArray.length; j++){
-        console.log("seedArray: " + seedArray)
         if(j == 0){ // No need to append for first option, just change style like round 2
           teamStyleLogic(afcStorageArray[seedArray[j]],afcRound3Array[i])
         } else { // every other option must be appended
@@ -68,9 +68,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }
   }
-  
+
   // Super Bowl
-  
+
 
 
   $(function(){
