@@ -15,9 +15,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 	var afcStorageArray = [];
 
-	console.log("AFC Round 1 - " + afcRound1Array.length)
-	console.log("NFC Round 1 - " + nfcRound1Array .length)
-
 	// AFC Round 1
 	for(var i=0; i< afcRound1Array.length; i++){
 
@@ -47,19 +44,26 @@ document.addEventListener("DOMContentLoaded", function(){
 		teamStyleLogic(afcStorageArray[seed],afcRound2Array[i])
 	}
 
+
 	// AFC Round 3 (semi final)
 	for(var i=0; i< afcRound3Array.length; i++){
+		console.log("Length at i " +i+ " - " +afcRound3Array.length)
 		seedString = afcRound3Array[i].getAttribute("seed")
 		seedArray = seedString.split(",")
 		for(var j=0; j<seedArray.length; j++){
+
 			if(j == 0){ // No need to append for first option, just change the style
 				teamStyleLogic(afcStorageArray[seedArray[j]],afcRound3Array[i])
 			} else { // every other option must be appended
-				backwardCheckLogic(seedArray[j], afcRound3Array[i]);         
+				console.log("Appending: " + seedArray[j])
+				var appendedElement = backwardCheckLogic(seedArray[j], afcRound3Array[i]);
+				teamStyleLogic(afcStorageArray[seedArray[j]],appendedElement)
 			}
 
 		}
+
 	}
+	console.log("done dropdown")
 
 	// Super Bowl
 	//TODO make this seed parse its own function
@@ -71,12 +75,11 @@ document.addEventListener("DOMContentLoaded", function(){
 		if(j == 0){ // No need to append for first option, just change style like round 2
 			teamStyleLogic(afcStorageArray[afcSeedArray[j]],afcChampion)
 		} else { // every other option must be appended
-			console.log("J: " + j)
-			backwardCheckLogic(afcSeedArray[j], afcChampion);         
+			//			console.log("J: " + j)
+			backwardCheckLogic(afcSeedArray[j], afcChampion);
 		}
 
 	}
-
 
 
 	$(function(){
@@ -152,8 +155,9 @@ function teamStyleLogic(teamObject, divisionArrayElement){
 function backwardCheckLogic(seed, dropdownElement){
 	const appendDropdown = document.createElement("p"); 
 	appendDropdown.setAttribute("seed", seed)
-	appendDropdown.setAttribute("class", "drop-item AFC3"); //TODO - why does this need the AFC3 tag to appear?
+	appendDropdown.setAttribute("class", "drop-item"); //TODO - why does this need the AFC3 tag to appear?
 	dropdownElement.insertAdjacentElement('afterend', appendDropdown)
+ 	return appendDropdown;
 }
 
 
