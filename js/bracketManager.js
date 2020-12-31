@@ -3,17 +3,18 @@ document.addEventListener("DOMContentLoaded", function(){
 	// Grab team JSON data
 	var teams = parseJson(data)
 	var result = parseJson(results)
+	
+	// HTML element selections
 	var afcRound1Array = document.getElementsByClassName("AFC");
 	var afcRound2Array = document.getElementsByClassName("AFC2");
 	var afcRound3Array = document.getElementsByClassName("AFC3");
-
 	var nfcRound1Array = document.getElementsByClassName("NFC");
-
 	var afcChampion = document.getElementById("AFCSB");
 	var nfcChampion = document.getElementById("NFCSB");
 
-
+	// Stored local version of team seeds
 	var afcStorageArray = [];
+	var nfcStorageArray = [];
 
 	// AFC Round 1
 	for(var i=0; i< afcRound1Array.length; i++){
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 		// Get the right team index
 		teamObject = binarySearch(teams, result.nfcRound1[seed-1])
+		nfcStorageArray[seed] = teamObject 
 		teamStyleLogic(teamObject , nfcRound1Array[i])
 	}
 
@@ -55,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function(){
 			if(j == 0){ // No need to append for first option, just change the style
 				teamStyleLogic(afcStorageArray[seedArray[j]],afcRound3Array[i])
 			} else { // every other option must be appended
-				console.log("Appending: " + seedArray[j])
 				var appendedElement = backwardCheckLogic(seedArray[j], afcRound3Array[i]);
 				teamStyleLogic(afcStorageArray[seedArray[j]],appendedElement)
 			}
@@ -63,22 +64,35 @@ document.addEventListener("DOMContentLoaded", function(){
 		}
 
 	}
-	console.log("done dropdown")
 
 	// Super Bowl
-	//TODO make this seed parse its own function
 	afcSeedString = afcChampion.getAttribute("seed")
 	nfcSeedString = nfcChampion.getAttribute("seed")
 
+	//TODO make this seed parse its own function
 	afcSeedArray = afcSeedString.split(",")
+	nfcSeedArray = nfcSeedString.split(",")
+
+	// Super Bowl - AFC options
 	for(var j=0; j<afcSeedArray.length; j++){
 		if(j == 0){ // No need to append for first option, just change style like round 2
 			teamStyleLogic(afcStorageArray[afcSeedArray[j]],afcChampion)
 		} else { // every other option must be appended
-			//			console.log("J: " + j)
-			backwardCheckLogic(afcSeedArray[j], afcChampion);
+			console.log("J: " + j)
+			var appendedElement = backwardCheckLogic(afcSeedString[j], afcChampion);
+			teamStyleLogic(afcStorageArray[afcSeedArray[j]],appendedElement)
 		}
+	}
 
+	// Super Bowl - NFC options
+	for(var j=0; j<nfcSeedArray.length; j++){
+		if(j == 0){ // No need to append for first option, just change style like round 2
+			teamStyleLogic(nfcStorageArray[nfcSeedArray[j]],nfcChampion)
+		} else { // every other option must be appended
+			console.log("J: " + j)
+			var appendedElement = backwardCheckLogic(nfcSeedString[j], nfcChampion);
+			teamStyleLogic(nfcStorageArray[nfcSeedArray[j]],appendedElement)
+		}
 	}
 
 
@@ -155,9 +169,9 @@ function teamStyleLogic(teamObject, divisionArrayElement){
 function backwardCheckLogic(seed, dropdownElement){
 	const appendDropdown = document.createElement("p"); 
 	appendDropdown.setAttribute("seed", seed)
-	appendDropdown.setAttribute("class", "drop-item"); //TODO - why does this need the AFC3 tag to appear?
+	appendDropdown.setAttribute("class", "drop-item");
 	dropdownElement.insertAdjacentElement('afterend', appendDropdown)
- 	return appendDropdown;
+	return appendDropdown;
 }
 
 
