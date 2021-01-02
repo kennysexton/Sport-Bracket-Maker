@@ -96,73 +96,114 @@ function firstRoundPopulate(elementArray, teamsObject, resultObject){
 
 function secondRoundPopulate(elementArray,divisionStorage){
 	for(var i=0; i< elementArray.length; i++){
-		seed = parseInt(elementArray[i].getAttribute("seed"))
+		seed = parseInt(elementArray[i].getAttribute("default"))
 		teamStyleLogic(divisionStorage[seed],elementArray[i])
+		elementArray[i].setAttribute("seed", seed)
 	}
 }
 
 function thirdRoundPopulate(elementArray,divisionStorage){
 	for(var i=0; i< elementArray.length; i++){
 		seedString = elementArray[i].getAttribute("default")
-		seedArray = seedString.split(",")
-		for(var j=0; j<seedArray.length; j++){
 
-			if(j == 0){ // No need to append for first option, just change the style
-				teamStyleLogic(divisionStorage[seedArray[j]],elementArray[i])
-			} else { // every other option must be appended
-				var appendedElement = backwardCheckLogic(seedArray[j], elementArray[i]);
-				teamStyleLogic(divisionStorage[seedArray[j]],appendedElement)
-			}
-		}
+		styleAndAppendOptionsIfNeeded(seedString, elementArray[i], divisionStorage)
 	}
 }
 
-function superBowlPopulate(element, divisionStorage){
-	seedString = element.getAttribute("seed")
-	seedArray = seedString.split(",")
 
-	for(var j=0; j<seedArray.length; j++){
-		if(j == 0){ // No need to append for first option, just change style like round 2
+function superBowlPopulate(element, divisionStorage){
+	seedString = element.getAttribute("default")
+
+	styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage)
+}
+
+
+function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
+
+	if(round.startsWith("A")){
+		if(round.endsWith("2")){
+			console.log("inside round 2: " + seed)
+			// Go to AFC3 relevant object
+			var dropdownElement = $(".AFC3[default*='"+seed+"']")
+			resetDropdown(dropdownElement.get(0))
+			dropdownElement.attr('seed', seed);
+			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+		}
+
+		else if(round.endsWith("3")){
+			var newSeed = ""
+
+			console.log("inside rund 3: " + seed)
+
+			if(seed.length > 1){
+				console.error("something is wrong with this seed")
+			}
+			// Go to AFC3 relevant object
+			var dropdownElement = $("#AFCSB")
+
+			//Get the current seed
+			if(dropdownElement.attr("seed") == undefined){
+				newSeed = dropdownElement.attr("default")
+			} else {
+				newSeed = dropdownElement.attr("seed")
+			}
+			console.log("new seed1: " + newSeed)
+
+			var lowerSet = "2,3,6,7";
+			var upperSet = "1,4,5";
+
+			// remove not used 2,3,6,7
+			if(lowerSet.includes(seed)){
+				newSeed = newSeed.replace("2,", ""); //TODO one statement
+				newSeed = newSeed.replace("3,", "");
+				newSeed = newSeed.replace("6,", "");
+				newSeed = newSeed.replace(",7", "");
+				newSeed = newSeed.concat(","+seed)
+				console.log("newseed2: " + newSeed)
+			} else { // is in upper set ([1, 4, 5])
+				newSeed = newSeed.replace("1,", ""); //TODO one statement
+				newSeed = newSeed.replace("4,", "");
+				newSeed = newSeed.replace("5,", "");
+				newSeed = seed+",".concat(newSeed)
+				console.log("newset: " + newSeed)
+			}
+
+			// Style dropdown to show the 
+			resetDropdown(dropdownElement.get(0))
+			dropdownElement.attr('seed', newSeed);
+			styleAndAppendOptionsIfNeeded(newSeed, dropdownElement.get(0), afcStorageArray)
+		}
+
+	}
+
+	else if ( round.startsWith("N")) {
+
+	} else { // round = "SB"
+		// No action needed.
+	}
+}
+
+function styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage){
+	var seedArray = seedString.split(",")
+
+	for(var j=0; j<seedArray.length; j++){		
+		if(j == 0){ // No need to append for first option, just change the style
 			teamStyleLogic(divisionStorage[seedArray[j]],element)
+			element.setAttribute("seed", seedArray[j])
 		} else { // every other option must be appended
-			var appendedElement = backwardCheckLogic(seedString[j], element);
+
+			var appendedElement = backwardCheckLogic(seedArray[j], element);
 			teamStyleLogic(divisionStorage[seedArray[j]],appendedElement)
 		}
 	}
 }
 
 
-function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
-	console.log("button updated! " + afcStorageArray[seed].name);
-
-	console.log("button updated! " + nfcStorageArray[seed].name);
-
-	if(round.startsWith("A")){
-		if(round.endsWith("2")){
-			console.log("inside: " + seed)
-			// Go to AFC3 relevant object
-			var dropdownElement = $(".AFC3[seed*='"+seed+"']")
-			dropdownElement.attr('seed', seed);
-			resetDropdown(dropdownElement.get(0))
-			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
-			
-			
-			// Seed seed attribute
-		}
-		
-	} else if ( round.startsWith("N")) {
-		
-	} else {
-		console.error("Button round attribute is missing or wrong")
-	}
-}
-
 function resetDropdown(element){
 	sibling = element.nextElementSibling
-	console.log(sibling)
 
 	while(sibling != null && sibling.hasAttribute("temporary") ){
-		console.log("hit")
+		console.log("removing a dropdown options")
 		sibling.remove();
 		sibling = element.nextElementSibling;
 	}
