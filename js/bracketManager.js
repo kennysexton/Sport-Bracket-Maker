@@ -40,14 +40,20 @@ document.addEventListener("DOMContentLoaded", function(){
 			var dropdownButton = $(this).parent().prev()
 			var seed = $(this).attr("seed");
 
-			console.log(seed)
-
+			// Button styling
 			dropdownButton.text($(this).text());
 			dropdownButton.css('background', $(this).css('background'));
 			dropdownButton.attr('seed', seed)
+
+
+			var round = dropdownButton.attr("round")
+			buttonUpdate(seed, round, afcStorageArray, nfcStorageArray);
+
 		});
 	});
 });
+
+
 
 // Logic used for getting populating team buttons
 function teamStyleLogic(teamObject, divisionArrayElement){
@@ -68,6 +74,7 @@ function backwardCheckLogic(seed, dropdownElement){
 	const appendDropdown = document.createElement("p"); 
 	appendDropdown.setAttribute("seed", seed)
 	appendDropdown.setAttribute("class", "drop-item");
+	appendDropdown.setAttribute("temporary", "");
 	dropdownElement.insertAdjacentElement('afterend', appendDropdown)
 	return appendDropdown;
 }
@@ -96,7 +103,7 @@ function secondRoundPopulate(elementArray,divisionStorage){
 
 function thirdRoundPopulate(elementArray,divisionStorage){
 	for(var i=0; i< elementArray.length; i++){
-		seedString = elementArray[i].getAttribute("seed")
+		seedString = elementArray[i].getAttribute("default")
 		seedArray = seedString.split(",")
 		for(var j=0; j<seedArray.length; j++){
 
@@ -106,9 +113,7 @@ function thirdRoundPopulate(elementArray,divisionStorage){
 				var appendedElement = backwardCheckLogic(seedArray[j], elementArray[i]);
 				teamStyleLogic(divisionStorage[seedArray[j]],appendedElement)
 			}
-
 		}
-
 	}
 }
 
@@ -127,4 +132,40 @@ function superBowlPopulate(element, divisionStorage){
 }
 
 
+function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
+	console.log("button updated! " + afcStorageArray[seed].name);
 
+	console.log("button updated! " + nfcStorageArray[seed].name);
+
+	if(round.startsWith("A")){
+		if(round.endsWith("2")){
+			console.log("inside: " + seed)
+			// Go to AFC3 relevant object
+			var dropdownElement = $(".AFC3[seed*='"+seed+"']")
+			dropdownElement.attr('seed', seed);
+			resetDropdown(dropdownElement.get(0))
+			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+			
+			
+			// Seed seed attribute
+		}
+		
+	} else if ( round.startsWith("N")) {
+		
+	} else {
+		console.error("Button round attribute is missing or wrong")
+	}
+}
+
+function resetDropdown(element){
+	sibling = element.nextElementSibling
+	console.log(sibling)
+
+	while(sibling != null && sibling.hasAttribute("temporary") ){
+		console.log("hit")
+		sibling.remove();
+		sibling = element.nextElementSibling;
+	}
+	var defaultSeed = element.getAttribute("default")
+	element.setAttribute("seed", defaultSeed)
+}
