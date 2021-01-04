@@ -190,8 +190,6 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 
 
 
-
-
       // Style dropdown to show the 
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', newSeed);
