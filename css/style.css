@@ -37,3 +37,8 @@ p {
   -webkit-box-shadow: 3px 12px 15px rgba(0, 0, 0, 0.3); 
   -moz-box-shadow: 3px 12px 15px rgba(0, 0, 0, 0.3);
 }
+
+a {
+	color : #3B4247 !important;
+	font-weight: 500;
+}

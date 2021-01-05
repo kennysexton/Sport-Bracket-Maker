@@ -114,12 +114,11 @@ function superBowlPopulate(element, divisionStorage){
 	styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage)
 }
 
-
 function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 
 	if(round.startsWith("A")){
 		if(round.endsWith("2")){
-			console.log("inside round 2: " + seed)
+			console.log("inside round 2 w/ seed: " + seed)
 			// Go to AFC3 relevant object
 			var dropdownElement = $(".AFC3[default*='"+seed+"']")
 			resetDropdown(dropdownElement.get(0))
@@ -142,10 +141,10 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 			var upperSet = "1,4,5";
 
 			//Get the current selected seed
-			if(dropdownElement.attr("selection") == undefined){
+			if(dropdownElement.attr("selectionA") == undefined){
 				newSeed = dropdownElement.attr("default")
 
-				
+
 				if(lowerSet.includes(seed)){ // remove unused 2,3,6,7
 					newSeed = replaceUnusedSeeds(newSeed, 'lower');
 					newSeed = newSeed.concat(","+seed)
@@ -157,28 +156,23 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 				console.log("Default final value: " + newSeed)
 
 				// Show that a division final was selected
-				dropdownElement.attr("selection", seed)
+				dropdownElement.attr("selectionA", seed)
 
 			} else {
-				newSeed = dropdownElement.attr("selection")
+				newSeed = dropdownElement.attr("selectionA")
 
-				// remove not used 2,3,6,7
+
 				if(lowerSet.includes(seed)){
-					//          newSeed = newSeed.replace("1,", ""); //TODO one statement
-					//          newSeed = newSeed.replace("4,", "");
-					//          newSeed = newSeed.replace("5,", "");
+					newSeed = replaceUnusedSeeds(newSeed, 'lower');
 					newSeed = newSeed.concat(","+seed)
 					console.log("lower set override : " + newSeed)
 				} else { // is in upper set ([1, 4, 5])
-					//          newSeed = newSeed.replace("2,", ""); //TODO one statement
-					//          newSeed = newSeed.replace("3,", "");
-					//          newSeed = newSeed.replace("6,", "");
-					//          newSeed = newSeed.replace("7,", "");
+					newSeed = replaceUnusedSeeds(newSeed, 'upper');
 
 					newSeed = seed+",".concat(newSeed)
 					console.log("uppder set override: " + newSeed)
 				}
-				dropdownElement.attr("selection", newSeed)
+				dropdownElement.attr("selectionA", newSeed)
 			}
 
 			// Style dropdown to show the 
@@ -186,11 +180,72 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 			dropdownElement.attr('seed', newSeed);
 			styleAndAppendOptionsIfNeeded(newSeed, dropdownElement.get(0), afcStorageArray)
 		}
-
-
 	}
 
 	else if ( round.startsWith("N")) {
+		if(round.endsWith("2")){
+			console.log("inside round 2 w/ seed: " + seed)
+			// Go to AFC3 relevant object
+			var dropdownElement = $(".NFC3[default*='"+seed+"']")
+			resetDropdown(dropdownElement.get(0))
+			dropdownElement.attr('seed', seed);
+			teamStyleLogic(nfcStorageArray[seed],dropdownElement.get(0))
+		}
+
+		else if(round.endsWith("3")){
+			var newSeed = ""
+
+			console.log("inside round 3: " + seed)
+
+			if(seed.length > 1){
+				console.error("something is wrong with this seed")
+			}
+			// Go to AFC3 relevant object
+			var dropdownElement = $("#NFCSB")
+
+			var lowerSet = "2,3,6,7";
+			var upperSet = "1,4,5";
+
+			//Get the current selected seed
+			if(dropdownElement.attr("selectionN") == undefined){
+				newSeed = dropdownElement.attr("default")
+
+
+				if(lowerSet.includes(seed)){ // remove unused 2,3,6,7
+					newSeed = replaceUnusedSeeds(newSeed, 'lower');
+					newSeed = newSeed.concat(","+seed)
+				} else { // is in upper set ([1, 4, 5])
+					newSeed = replaceUnusedSeeds(newSeed, 'upper');
+					newSeed = seed+",".concat(newSeed)
+				}
+
+				console.log("Default final value: " + newSeed)
+
+				// Show that a division final was selected
+				dropdownElement.attr("selectionN", seed)
+
+			} else {
+				newSeed = dropdownElement.attr("selectionN")
+
+
+				if(lowerSet.includes(seed)){
+					newSeed = replaceUnusedSeeds(newSeed, 'lower');
+					newSeed = newSeed.concat(","+seed)
+					console.log("lower set override : " + newSeed)
+				} else { // is in upper set ([1, 4, 5])
+					newSeed = replaceUnusedSeeds(newSeed, 'upper');
+
+					newSeed = seed+",".concat(newSeed)
+					console.log("upper set override: " + newSeed)
+				}
+				dropdownElement.attr("selectionN", newSeed)
+			}
+
+			// Style dropdown to show the 
+			resetDropdown(dropdownElement.get(0))
+			dropdownElement.attr('seed', newSeed);
+			styleAndAppendOptionsIfNeeded(newSeed, dropdownElement.get(0), nfcStorageArray)
+		}
 
 	} else { // round = "SB"
 		// No action needed.
@@ -256,6 +311,4 @@ function replaceUnusedSeeds(newSeed, tier){
 	}
 
 	return buildSeed;
-
-
 }
