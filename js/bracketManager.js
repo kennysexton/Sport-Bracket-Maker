@@ -169,16 +169,16 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 
         // remove not used 2,3,6,7
         if(lowerSet.includes(seed)){
-          newSeed = newSeed.replace("1,", ""); //TODO one statement
-          newSeed = newSeed.replace("4,", "");
-          newSeed = newSeed.replace("5,", "");
+//          newSeed = newSeed.replace("1,", ""); //TODO one statement
+//          newSeed = newSeed.replace("4,", "");
+//          newSeed = newSeed.replace("5,", "");
           newSeed = newSeed.concat(","+seed)
           console.log("selection based : " + newSeed)
         } else { // is in upper set ([1, 4, 5])
-          newSeed = newSeed.replace("2,", ""); //TODO one statement
-          newSeed = newSeed.replace("3,", "");
-          newSeed = newSeed.replace("6,", "");
-          newSeed = newSeed.replace("7,", "");
+//          newSeed = newSeed.replace("2,", ""); //TODO one statement
+//          newSeed = newSeed.replace("3,", "");
+//          newSeed = newSeed.replace("6,", "");
+//          newSeed = newSeed.replace("7,", "");
 
           newSeed = seed+",".concat(newSeed)
           console.log("selection based--: " + newSeed)
