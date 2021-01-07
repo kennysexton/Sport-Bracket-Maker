@@ -42,3 +42,12 @@ a {
 	color : #3B4247 !important;
 	font-weight: 500;
 }
+
+main {
+	min-width: 960px;
+}
+
+
+.row {
+	flex-wrap: nowrap
+}
