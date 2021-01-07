@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 			var round = dropdownButton.attr("round")
 			buttonUpdate(seed, round, afcStorageArray, nfcStorageArray);
+			checkifAllChociesAreMade();
 
 		});
 	});
@@ -312,3 +313,34 @@ function replaceUnusedSeeds(newSeed, tier){
 
 	return buildSeed;
 }
+
+function checkifAllChociesAreMade(){
+	var choices=$(".dropdown-toggle[seed]")
+
+	console.log("Number of choices made: " + choices.length)
+	if(choices.length == 11){
+		// enable submit
+		$('#submit').prop('disabled', false);
+
+		//init results file
+
+
+	}
+}
+
+$(function(){
+	$("#submit").on('click', function(){
+
+		var seedList = ""
+		var choices=$(".dropdown-toggle[seed]")
+
+		choices.each(function( index ) {
+			seedList += $( this ).attr('seed')
+			console.log( index + ": " + $( this ).attr('seed') );
+		});
+
+		console.log(seedList)
+		
+
+	});
+});
