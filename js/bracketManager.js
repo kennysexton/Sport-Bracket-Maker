@@ -150,9 +150,7 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 			dropdownElement.attr('seed', seed);
 			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
 		}
-	}
-
-	else if ( round.startsWith("N")) {
+	}	else if ( round.startsWith("N")) {
 		if(round.endsWith("2")){
 			console.log("inside round 2 w/ seed: " + seed)
 			// Go to AFC3 relevant object
