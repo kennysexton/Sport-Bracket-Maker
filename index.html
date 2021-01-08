@@ -393,12 +393,15 @@
 				</div>
 			</div>
 
+          <form   action="https://formspree.io/f/xjvpjwnl"
+  method="POST">
 			<div class="form-inline mt-5 mb-5 d-flex justify-content-center">
-				<input type="name" class="form-control" id="username" placeholder="Bracket Name">
+				<input type="name" class="form-control" id="username" placeholder="Bracket Name" required>
 				<input type="text" name="_gotcha" class="hide" />
 				<input id="wc-picks" type="text" name="picks" class="hide" >
-				<button id="wc-submit" class="btn btn-info" disabled data-toggle="tooltip" data-placement="top" title="Enabled once all picks are made">Submit</button>
+				<button type="submit" id="wc-submit" class="btn btn-primary" disabled data-toggle="tooltip" data-placement="top" title="Enabled once all picks are made">Submit</button>
 			</div>
+          </form>
 
 			<!--Row 1-->
 			<h4 class="wip-text d-flex align-items-center justify-content-center">Bracket can be filled after wildcard round</h4>
