@@ -61,7 +61,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
 			var round = dropdownButton.attr("round")
 			buttonUpdate(seed, round, afcStorageArray, nfcStorageArray);
-			checkifAllChociesAreMade();
+			checkifAllWildCardChociesAreMade()
+//			checkifAllChociesAreMade();
 
 		});
 	});
@@ -248,10 +249,22 @@ function replaceUnusedSeeds(newSeed, tier){
 	return buildSeed;
 }
 
+function checkifAllWildCardChociesAreMade(){
+	var choices=$(".wc[seed]")
+
+	console.log("Number of choices made: " + choices.length)
+	if(choices.length == 6){
+		// enable submit
+		$('#wc-submit').prop('disabled', false);
+
+		//init results file
+	}
+}
+
 function checkifAllChociesAreMade(){
 	var choices=$(".dropdown-toggle[seed]")
 
-	console.log("Number of choices made: " + choices.length)
+//	console.log("Number of choices made: " + choices.length)
 	if(choices.length == 11){
 		// enable submit
 		$('#submit').prop('disabled', false);
@@ -261,7 +274,7 @@ function checkifAllChociesAreMade(){
 }
 
 $(function(){
-	$("#submit").on('click', function(){
+	$("#wc-submit").on('click', function(){
 
 		var seedList = ""
 		var choices=$(".dropdown-toggle[seed]")
