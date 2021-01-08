@@ -283,6 +283,8 @@ $(function(){
 			seedList += $( this ).attr('seed')
 			console.log( index + ": " + $( this ).attr('seed') );
 		});
+		
+		$('#wc-picks').val(seedList)
 
 		console.log(seedList)
 	});
