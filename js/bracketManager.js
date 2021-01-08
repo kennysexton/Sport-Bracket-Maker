@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function(){
 	var result = parseJson(results)
 
 	// HTML element selections
+	var afcWildCard = document.getElementsByClassName("AFCWC");
+	var nfcWildCard = document.getElementsByClassName("NFCWC");
+	
 	var afcRound1Array = document.getElementsByClassName("AFC");
 	var afcRound2Array = document.getElementsByClassName("AFC2");
 	var afcRound3Array = document.getElementsByClassName("AFC3");
@@ -23,6 +26,10 @@ document.addEventListener("DOMContentLoaded", function(){
 	// Round 1 (qualified teams)
 	var afcStorageArray = firstRoundPopulate(afcRound1Array,teams, result.afcRound1)
 	var nfcStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.nfcRound1)
+	
+	// Wild Card
+	secondRoundPopulate(afcWildCard,afcStorageArray)
+	secondRoundPopulate(nfcWildCard,nfcStorageArray)
 
 	// Round 2 (wild card round)
 	secondRoundPopulate(afcRound2Array,afcStorageArray)
@@ -54,7 +61,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
 			var round = dropdownButton.attr("round")
 			buttonUpdate(seed, round, afcStorageArray, nfcStorageArray);
-			checkifAllChociesAreMade();
+			checkifAllWildCardChociesAreMade()
+//			checkifAllChociesAreMade();
 
 		});
 	});
@@ -150,9 +158,7 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 			dropdownElement.attr('seed', seed);
 			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
 		}
-	}
-
-	else if ( round.startsWith("N")) {
+	}	else if ( round.startsWith("N")) {
 		if(round.endsWith("2")){
 			console.log("inside round 2 w/ seed: " + seed)
 			// Go to AFC3 relevant object
@@ -243,10 +249,22 @@ function replaceUnusedSeeds(newSeed, tier){
 	return buildSeed;
 }
 
+function checkifAllWildCardChociesAreMade(){
+	var choices=$(".wc[seed]")
+
+	console.log("Number of choices made: " + choices.length)
+	if(choices.length == 6){
+		// enable submit
+		$('#wc-submit').prop('disabled', false);
+
+		//init results file
+	}
+}
+
 function checkifAllChociesAreMade(){
 	var choices=$(".dropdown-toggle[seed]")
 
-	console.log("Number of choices made: " + choices.length)
+//	console.log("Number of choices made: " + choices.length)
 	if(choices.length == 11){
 		// enable submit
 		$('#submit').prop('disabled', false);
@@ -256,7 +274,7 @@ function checkifAllChociesAreMade(){
 }
 
 $(function(){
-	$("#submit").on('click', function(){
+	$("#wc-submit").on('click', function(){
 
 		var seedList = ""
 		var choices=$(".dropdown-toggle[seed]")
