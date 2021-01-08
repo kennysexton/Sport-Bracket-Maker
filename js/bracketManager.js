@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function(){
 	var result = parseJson(results)
 
 	// HTML element selections
+	var afcWildCard = document.getElementsByClassName("AFCWC");
+	var nfcWildCard = document.getElementsByClassName("NFCWC");
+	
 	var afcRound1Array = document.getElementsByClassName("AFC");
 	var afcRound2Array = document.getElementsByClassName("AFC2");
 	var afcRound3Array = document.getElementsByClassName("AFC3");
@@ -23,6 +26,10 @@ document.addEventListener("DOMContentLoaded", function(){
 	// Round 1 (qualified teams)
 	var afcStorageArray = firstRoundPopulate(afcRound1Array,teams, result.afcRound1)
 	var nfcStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.nfcRound1)
+	
+	// Wild Card
+	secondRoundPopulate(afcWildCard,afcStorageArray)
+	secondRoundPopulate(nfcWildCard,nfcStorageArray)
 
 	// Round 2 (wild card round)
 	secondRoundPopulate(afcRound2Array,afcStorageArray)
