@@ -8,9 +8,11 @@ document.addEventListener("DOMContentLoaded", function(){
 	var afcRound1Array = document.getElementsByClassName("AFC");
 	var afcRound2Array = document.getElementsByClassName("AFC2");
 	var afcRound3Array = document.getElementsByClassName("AFC3");
+	var afcRound4Array = document.getElementsByClassName("AFC4");
 	var nfcRound1Array = document.getElementsByClassName("NFC");
 	var nfcRound2Array = document.getElementsByClassName("NFC2");
 	var nfcRound3Array = document.getElementsByClassName("NFC3");
+	var nfcRound4Array = document.getElementsByClassName("NFC4");
 	var afcChampion = document.getElementById("AFCSB");
 	var nfcChampion = document.getElementById("NFCSB");
 
@@ -26,9 +28,13 @@ document.addEventListener("DOMContentLoaded", function(){
 	secondRoundPopulate(afcRound2Array,afcStorageArray)
 	secondRoundPopulate(nfcRound2Array,nfcStorageArray)
 
-	// Round 3 (AFC/NFC Championship)
-	thirdRoundPopulate(afcRound3Array, afcStorageArray)
-	thirdRoundPopulate(nfcRound3Array, nfcStorageArray)
+	// Round 3 (Division round)
+	multipleOptionsPopulate(afcRound3Array, afcStorageArray)
+	multipleOptionsPopulate(nfcRound3Array, nfcStorageArray)
+
+	// Round 4 (AFC/NFC Championship)
+	multipleOptionsPopulate(afcRound4Array, afcStorageArray)
+	multipleOptionsPopulate(nfcRound4Array, nfcStorageArray)
 
 	// Super Bowl
 	superBowlPopulate(afcChampion, afcStorageArray)
@@ -101,13 +107,14 @@ function secondRoundPopulate(elementArray,divisionStorage){
 	}
 }
 
-function thirdRoundPopulate(elementArray,divisionStorage){
+function multipleOptionsPopulate(elementArray,divisionStorage){
 	for(var i=0; i< elementArray.length; i++){
 		seedString = elementArray[i].getAttribute("default")
 
 		styleAndAppendOptionsIfNeeded(seedString, elementArray[i], divisionStorage)
 	}
 }
+
 
 function superBowlPopulate(element, divisionStorage){
 	seedString = element.getAttribute("default")
@@ -125,61 +132,74 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 			resetDropdown(dropdownElement.get(0))
 			dropdownElement.attr('seed', seed);
 			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
-		}
 
-		else if(round.endsWith("3")){
-			var newSeed = ""
-
-			console.log("inside round 3: " + seed)
-
-			if(seed.length > 1){
-				console.error("something is wrong with this seed")
-			}
+		} else if(round.endsWith("3")){
+			console.log("inside round 3 w/ seed: " + seed)
 			// Go to AFC3 relevant object
-			var dropdownElement = $("#AFCSB")
-
-			var lowerSet = "2,3,6,7";
-			var upperSet = "1,4,5";
-
-			//Get the current selected seed
-			if(dropdownElement.attr("selectionA") == undefined){
-				newSeed = dropdownElement.attr("default")
-
-
-				if(lowerSet.includes(seed)){ // remove unused 2,3,6,7
-					newSeed = replaceUnusedSeeds(newSeed, 'lower');
-					newSeed = newSeed.concat(","+seed)
-				} else { // is in upper set ([1, 4, 5])
-					newSeed = replaceUnusedSeeds(newSeed, 'upper');
-					newSeed = seed+",".concat(newSeed)
-				}
-
-				console.log("Default final value: " + newSeed)
-
-				// Show that a division final was selected
-				dropdownElement.attr("selectionA", seed)
-
-			} else {
-				newSeed = dropdownElement.attr("selectionA")
-
-
-				if(lowerSet.includes(seed)){
-					newSeed = replaceUnusedSeeds(newSeed, 'lower');
-					newSeed = newSeed.concat(","+seed)
-					console.log("lower set override : " + newSeed)
-				} else { // is in upper set ([1, 4, 5])
-					newSeed = replaceUnusedSeeds(newSeed, 'upper');
-
-					newSeed = seed+",".concat(newSeed)
-					console.log("uppder set override: " + newSeed)
-				}
-				dropdownElement.attr("selectionA", newSeed)
-			}
-
-			// Style dropdown to show the 
+			var dropdownElement = $(".AFC4[default*='"+seed+"']")
 			resetDropdown(dropdownElement.get(0))
-			dropdownElement.attr('seed', newSeed);
-			styleAndAppendOptionsIfNeeded(newSeed, dropdownElement.get(0), afcStorageArray)
+			dropdownElement.attr('seed', seed);
+			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+
+		} else if(round.endsWith("4")){
+			console.log("inside round 4 w/ seed: " + seed)
+			// Go to AFC3 relevant object
+
+			var dropdownElement = $('#AFCSB')
+			resetDropdown(dropdownElement.get(0))
+			dropdownElement.attr('seed', seed);
+			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+			//			var newSeed = ""
+			//
+			//			console.log("inside round 3: " + seed)
+			//
+			//			if(seed.length > 1){
+			//				console.error("something is wrong with this seed")
+			//			}
+			//			// Go to AFC3 relevant object
+			//			var dropdownElement = $("#AFCSB")
+			//
+			//			var lowerSet = "2,3,6,7";
+			//			var upperSet = "1,4,5";
+			//
+			//			//Get the current selected seed
+			//			if(dropdownElement.attr("selectionA") == undefined){
+			//				newSeed = dropdownElement.attr("default")
+			//
+			//
+			//				if(lowerSet.includes(seed)){ // remove unused 2,3,6,7
+			//					newSeed = replaceUnusedSeeds(newSeed, 'lower');
+			//					newSeed = newSeed.concat(","+seed)
+			//				} else { // is in upper set ([1, 4, 5])
+			//					newSeed = replaceUnusedSeeds(newSeed, 'upper');
+			//					newSeed = seed+",".concat(newSeed)
+			//				}
+			//
+			//				console.log("Default final value: " + newSeed)
+			//
+			//				// Show that a division final was selected
+			//				dropdownElement.attr("selectionA", seed)
+			//			} else {
+			//				newSeed = dropdownElement.attr("selectionA")
+			//
+			//
+			//				if(lowerSet.includes(seed)){
+			//					newSeed = replaceUnusedSeeds(newSeed, 'lower');
+			//					newSeed = newSeed.concat(","+seed)
+			//					console.log("lower set override : " + newSeed)
+			//				} else { // is in upper set ([1, 4, 5])
+			//					newSeed = replaceUnusedSeeds(newSeed, 'upper');
+			//
+			//					newSeed = seed+",".concat(newSeed)
+			//					console.log("uppder set override: " + newSeed)
+			//				}
+			//				dropdownElement.attr("selectionA", newSeed)
+			//			}
+			//
+			//			// Style dropdown to show the 
+			//			resetDropdown(dropdownElement.get(0))
+			//			dropdownElement.attr('seed', newSeed);
+			//			styleAndAppendOptionsIfNeeded(newSeed, dropdownElement.get(0), afcStorageArray)
 		}
 	}
 
@@ -191,61 +211,74 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 			resetDropdown(dropdownElement.get(0))
 			dropdownElement.attr('seed', seed);
 			teamStyleLogic(nfcStorageArray[seed],dropdownElement.get(0))
-		}
-
-		else if(round.endsWith("3")){
-			var newSeed = ""
-
-			console.log("inside round 3: " + seed)
-
-			if(seed.length > 1){
-				console.error("something is wrong with this seed")
-			}
+		}else if(round.endsWith("3")){
+			console.log("inside round 3 w/ seed: " + seed)
 			// Go to AFC3 relevant object
-			var dropdownElement = $("#NFCSB")
-
-			var lowerSet = "2,3,6,7";
-			var upperSet = "1,4,5";
-
-			//Get the current selected seed
-			if(dropdownElement.attr("selectionN") == undefined){
-				newSeed = dropdownElement.attr("default")
-
-
-				if(lowerSet.includes(seed)){ // remove unused 2,3,6,7
-					newSeed = replaceUnusedSeeds(newSeed, 'lower');
-					newSeed = newSeed.concat(","+seed)
-				} else { // is in upper set ([1, 4, 5])
-					newSeed = replaceUnusedSeeds(newSeed, 'upper');
-					newSeed = seed+",".concat(newSeed)
-				}
-
-				console.log("Default final value: " + newSeed)
-
-				// Show that a division final was selected
-				dropdownElement.attr("selectionN", seed)
-
-			} else {
-				newSeed = dropdownElement.attr("selectionN")
-
-
-				if(lowerSet.includes(seed)){
-					newSeed = replaceUnusedSeeds(newSeed, 'lower');
-					newSeed = newSeed.concat(","+seed)
-					console.log("lower set override : " + newSeed)
-				} else { // is in upper set ([1, 4, 5])
-					newSeed = replaceUnusedSeeds(newSeed, 'upper');
-
-					newSeed = seed+",".concat(newSeed)
-					console.log("upper set override: " + newSeed)
-				}
-				dropdownElement.attr("selectionN", newSeed)
-			}
-
-			// Style dropdown to show the 
+			var dropdownElement = $(".AFC4[default*='"+seed+"']")
 			resetDropdown(dropdownElement.get(0))
-			dropdownElement.attr('seed', newSeed);
-			styleAndAppendOptionsIfNeeded(newSeed, dropdownElement.get(0), nfcStorageArray)
+			dropdownElement.attr('seed', seed);
+			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+
+		} else if(round.endsWith("4")){
+			console.log("inside round 4 w/ seed: " + seed)
+			// Go to AFC3 relevant object
+
+			var dropdownElement = $('#NFCSB')
+			resetDropdown(dropdownElement.get(0))
+			dropdownElement.attr('seed', seed);
+			teamStyleLogic(nfcStorageArray[seed],dropdownElement.get(0))
+			//			var newSeed = ""
+			//
+			//			console.log("inside round 3: " + seed)
+			//
+			//			if(seed.length > 1){
+			//				console.error("something is wrong with this seed")
+			//			}
+			//			// Go to AFC3 relevant object
+			//			var dropdownElement = $("#NFCSB")
+			//
+			//			var lowerSet = "2,3,6,7";
+			//			var upperSet = "1,4,5";
+			//
+			//			//Get the current selected seed
+			//			if(dropdownElement.attr("selectionN") == undefined){
+			//				newSeed = dropdownElement.attr("default")
+			//
+			//
+			//				if(lowerSet.includes(seed)){ // remove unused 2,3,6,7
+			//					newSeed = replaceUnusedSeeds(newSeed, 'lower');
+			//					newSeed = newSeed.concat(","+seed)
+			//				} else { // is in upper set ([1, 4, 5])
+			//					newSeed = replaceUnusedSeeds(newSeed, 'upper');
+			//					newSeed = seed+",".concat(newSeed)
+			//				}
+			//
+			//				console.log("Default final value: " + newSeed)
+			//
+			//				// Show that a division final was selected
+			//				dropdownElement.attr("selectionN", seed)
+			//
+			//			} else {
+			//				newSeed = dropdownElement.attr("selectionN")
+			//
+			//
+			//				if(lowerSet.includes(seed)){
+			//					newSeed = replaceUnusedSeeds(newSeed, 'lower');
+			//					newSeed = newSeed.concat(","+seed)
+			//					console.log("lower set override : " + newSeed)
+			//				} else { // is in upper set ([1, 4, 5])
+			//					newSeed = replaceUnusedSeeds(newSeed, 'upper');
+			//
+			//					newSeed = seed+",".concat(newSeed)
+			//					console.log("upper set override: " + newSeed)
+			//				}
+			//				dropdownElement.attr("selectionN", newSeed)
+			//			}
+			//
+			//			// Style dropdown to show the 
+			//			resetDropdown(dropdownElement.get(0))
+			//			dropdownElement.attr('seed', newSeed);
+			//			styleAndAppendOptionsIfNeeded(newSeed, dropdownElement.get(0), nfcStorageArray)
 		}
 
 	} else { // round = "SB"
@@ -340,7 +373,7 @@ $(function(){
 		});
 
 		console.log(seedList)
-		
+
 
 	});
 });
