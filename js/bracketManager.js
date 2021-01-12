@@ -38,11 +38,16 @@ document.addEventListener("DOMContentLoaded", function(){
 
 			var dropdownButton = $(this).parent().prev()
 			var seed = $(this).attr("seed");
+			var division = $(this).attr("division");
 
 			// Button styling
 			dropdownButton.text($(this).text());
 			dropdownButton.css('background', $(this).css('background'));
 			dropdownButton.attr('seed', seed)
+			console.log(division)
+			if(division != null){
+				dropdownButton.attr('division', division)
+			}
 
 			var round = dropdownButton.attr("round")
 			buttonUpdate(seed, round, afcStorageArray, nfcStorageArray);
@@ -134,7 +139,7 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 	}	else if ( round.startsWith("N")) {
 		if(round.endsWith("3")){
 			console.log("inside round 3 w/ seed: " + seed)
-			// Go to AFC3 relevant object
+			// Go to NFC3 relevant object
 			var dropdownElement = $(".NFC4[default*='"+seed+"']")
 			resetDropdown(dropdownElement.get(0))
 			dropdownElement.attr('seed', seed);
@@ -156,16 +161,28 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 
 function styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage){
 	var seedArray = seedString.split(",")
+	var needsDivision = false;
+
+	if(element.hasAttribute("id")){
+		needsDivision = true;
+
+	}
 
 	for(var j=0; j<seedArray.length; j++){		
 		if(j == 0){ // No need to append for first option, just change the style
 			teamStyleLogic(divisionStorage[seedArray[j]],element)
 			element.setAttribute("seed", seedArray[j])
-		} else { // every other option must be appended
 
+		} else { // every other option must be appended
 			var appendedElement = backwardCheckLogic(seedArray[j], element);
 			teamStyleLogic(divisionStorage[seedArray[j]],appendedElement)
+
+			if(needsDivision){
+				appendedElement.setAttribute("division", (element.getAttribute("id").substring(0, 1)))
+			}
 		}
+		// Superbowl only logic
+
 	}
 }
 
@@ -218,15 +235,15 @@ function checkifAllChociesAreMade(){
 		// enable submit
 		$('#submit').prop('disabled', false);
 
-		//init results file
 	}
 }
 
 function validateForm(){
+	event.preventDefault();
 	// Check that name is not blank
 	if(!$("#username").val()) {
 		console.log("Bracket does not have a name")
-		
+
 		$("#warning").removeClass('invisible');
 		event.preventDefault();
 		return false
@@ -239,6 +256,10 @@ function validateForm(){
 		seedList += $( this ).attr('seed')
 		console.log( index + ": " + $( this ).attr('seed') );
 	});
+
+	// Get if the picked winner was AFC or NFC
+	var winner = $("button[round='SB']").attr('division')
+	seedList += winner
 
 	$('#picks').val(seedList)
 
