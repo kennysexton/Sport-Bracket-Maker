@@ -2,19 +2,13 @@ results = {
 	"afcRound1":[
 		"Kansas City",
 		"Buffalo",
-		"Pittsburgh",
-		"Tennessee",
 		"Baltimore",
 		"Cleveland",
-		"Indianapolis",
 	],
 	"nfcRound1":[
 		"Green Bay",
 		"New Orleans",
-		"Seattle",
-		"Washington",
 		"Tampa Bay",
 		"Los Angeles",
-		"Chicago",
 	],
 }

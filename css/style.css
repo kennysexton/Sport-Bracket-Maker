@@ -73,3 +73,12 @@ h1 {
 	opacity: 20%;
 	pointer-events:none
 }
+
+.hide  {
+	display:none
+}
+
+.row{
+	margin-top: 1.5%;
+	margin-bottom: 1.5%;
+}
