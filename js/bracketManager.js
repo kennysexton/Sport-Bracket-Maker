@@ -135,10 +135,10 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 		if(round.endsWith("3")){
 			console.log("inside round 3 w/ seed: " + seed)
 			// Go to AFC3 relevant object
-			var dropdownElement = $(".AFC4[default*='"+seed+"']")
+			var dropdownElement = $(".NFC4[default*='"+seed+"']")
 			resetDropdown(dropdownElement.get(0))
 			dropdownElement.attr('seed', seed);
-			teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+			teamStyleLogic(nfcStorageArray[seed],dropdownElement.get(0))
 
 		} else if(round.endsWith("4")){
 			console.log("inside round 4 w/ seed: " + seed)
@@ -214,7 +214,6 @@ function replaceUnusedSeeds(newSeed, tier){
 function checkifAllChociesAreMade(){
 	var choices=$(".dropdown-toggle[seed]")
 
-	//	console.log("Number of choices made: " + choices.length)
 	if(choices.length == 7){
 		// enable submit
 		$('#submit').prop('disabled', false);
@@ -224,12 +223,14 @@ function checkifAllChociesAreMade(){
 }
 
 function validateForm(){
-		// Check that name is not blank
+	// Check that name is not blank
 	if(!$("#username").val()) {
-			console.log("Made it here")
-			$("#username").parents('div').addClass('alert alert-warning alert-dismissible fade show');
-			event.preventDefault();
-		}
+		console.log("Bracket does not have a name")
+		
+		$("#warning").removeClass('invisible');
+		event.preventDefault();
+		return false
+	}
 
 	var seedList = ""
 	var choices=$(".dropdown-toggle[seed]")
@@ -242,7 +243,6 @@ function validateForm(){
 	$('#picks').val(seedList)
 
 	console.log(seedList)
-	event.preventDefault();
 }
 
 
