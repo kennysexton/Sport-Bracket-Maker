@@ -239,7 +239,7 @@ function checkifAllChociesAreMade(){
 }
 
 function validateForm(){
-	event.preventDefault();
+
 	// Check that name is not blank
 	if(!$("#username").val()) {
 		console.log("Bracket does not have a name")
