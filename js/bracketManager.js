@@ -265,6 +265,3 @@ function validateForm(){
 
 	console.log(seedList)
 }
-
-
-
