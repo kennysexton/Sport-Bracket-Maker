@@ -36,3 +36,14 @@ function parseJson(jsonObject){
 		return null
 	}
 }
+
+
+//TODO make global
+function cleanInput(string){
+	let newString = ""
+	// remove dashes
+	newString = string.replace(/-/g, ' ');
+	//remove underscores
+	newString = string.replace(/_/g, ' ');
+	return newString
+}
