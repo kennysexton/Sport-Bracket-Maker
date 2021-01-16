@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 
 	// If results
-	if(1){
+	if(0){
 		leaderBoardLogic()
 	} else {
 		newBracketLogic()
