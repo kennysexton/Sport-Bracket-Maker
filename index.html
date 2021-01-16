@@ -1,81 +1,82 @@
 <!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Bracket Maker</title>
-    <meta name="description" content="A website for making playoff brackets">
-    <meta name="author" content="Kenny Sexton">
+		<title>Bracket Maker</title>
+		<meta name="description" content="A website for making playoff brackets">
+		<meta name="author" content="Kenny Sexton">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/style.css">
-    <link href="css/sticky-footer.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="css/sticky-footer.css" rel="stylesheet">
 
-  </head>
+	</head>
 
-  <body>
+	<body>
 
-    <main role="main" class="container-lg">
+		<main role="main" class="container-lg">
 
-      <h1 class="text-center mt-3 mb-5">2020 NFL Playoffs</h1>
+			<h1 class="text-center mt-3 mb-5">2020 NFL Playoffs</h1>
 
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#newUser" role="tab" aria-controls="home" aria-selected="true"><strong>New User</strong></a>
-        </li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="newUser" role="tabpanel" aria-labelledby="home-tab">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active font-weight-bold" id="home-tab" data-toggle="tab" href="#newUser" role="tab" aria-controls="home" aria-selected="true">New User</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="newUser" role="tabpanel" aria-labelledby="home-tab">
 
-          <div id='bracket-replace' class='text-center'>TODO - spinner on load</div>
-
-
-          <div id="warning" class="alert alert-warning alert-dismissible fade show invisible text-center" role="alert">
-            Submitted brackets must have a name
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+					<div id='bracket-replace' class=" mt-5">TODO - spinner on load</div>
 
 
-          <form  onsubmit="return validateForm()" action="https://formspree.io/f/xjvpjwnl"
-                method="POST">
-            <div class="form-inline mt-5 mb-5 d-flex justify-content-center">
-              <input type="name" name="name" class="form-control" id="username" placeholder="Bracket Name">
-              <input type="text" name="_gotcha" class="hide" />
-              <input id="picks" type="text" name="picks" class="hide">
-              <button type="submit" id="submit" class="btn btn-primary" disabled data-toggle="tooltip" data-placement="top" title="Enabled once all picks are made">Submit</button>
-            </div>
-          </form>
-        </div>
+					<div id="warning" class="alert alert-warning alert-dismissible fade show invisible text-center" role="alert">
+						Submitted brackets must have a name
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 
-      </div>
 
-    </main>
+					<form  onsubmit="return validateForm()" action="https://formspree.io/f/xjvpjwnl"
+								method="POST">
+						<div class="form-inline mt-5 mb-5 d-flex justify-content-center">
+							<input type="name" name="name" class="form-control" id="username" placeholder="Bracket Name">
+							<input type="text" name="_gotcha" class="hide" />
+							<input id="picks" type="text" name="picks" class="hide">
+							<button type="submit" id="submit" class="btn btn-primary" disabled data-toggle="tooltip" data-placement="top" title="Enabled once all picks are made">Submit</button>
+						</div>
+					</form>
+				</div>
 
-    <footer class="footer">
-      <div class="text-center">
-        <span class="text-muted ">Created by <a href="https://kennysexton.com/projects.html">Kenny Sexton</a> project hosted on <a href="https://github.com/kennysexton/Sport-Bracket-Maker">github</a></span>
-      </div>
-    </footer>
+			</div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		</main>
 
-    <script type="text/javascript" src="data/nfl.json"></script>
-    <script type="text/javascript" src="data/results.json"></script>
-    <script type="text/javascript" src="picks/userPicks.json"></script>
-    <script type="text/javascript" src="js/bracketManager.js"></script>
-    <script type="text/javascript" src="js/utils.js"></script>
-    <script type="text/javascript" src="js/displayUsers.js"></script>
+		<footer class="footer">
+			<div class="text-center">
+				<span class="text-muted ">Created by <a href="https://kennysexton.com/projects.html">Kenny Sexton</a> project hosted on <a href="https://github.com/kennysexton/Sport-Bracket-Maker">github</a></span>
+			</div>
+		</footer>
 
-  </body>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+		<script type="text/javascript" src="data/nfl.json"></script>
+		<script type="text/javascript" src="data/results.json"></script>
+		<script type="text/javascript" src="picks/userPicks.json"></script>
+		<script type="text/javascript" src="js/bracketManager.js"></script>
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/displayUsers.js"></script>
+		<script type="text/javascript" src="js/leaderboard.js"></script>
+
+	</body>
 </html>
