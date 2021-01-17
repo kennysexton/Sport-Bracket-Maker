@@ -64,9 +64,14 @@ function populateReadOnlyBracket(userSubmissions) {
 
       var choicesSelect = selectorArray[i] +" button[round]"
       var choices=$(choicesSelect)
-
-      //TODO, should this have a catch?? choices must be length 7
-      var winnerDivision = userSubmissions[objIndex].charAt(7) 
+			
+			// Check that submissions are in the correct format
+      if(userSubmissions[objIndex].length == 8){
+				var winnerDivision = userSubmissions[objIndex].charAt(7) 
+			} else {
+				console.error("User submission: " + objIndex + " is not the correct length")
+			}
+      
 
       choices.each(function(index) {
 
@@ -78,6 +83,8 @@ function populateReadOnlyBracket(userSubmissions) {
         $(this).removeClass('btn')
         $(this).removeAttr('aria-haspopup')
         $(this).removeAttr('data-toggle')
+				$(this).removeClass('btn-danger')
+				$(this).removeClass('btn-primary')
 
         // AFC
         if(index == 3){

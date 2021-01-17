@@ -106,5 +106,9 @@ h1 {
 
 .wrong #line {
   border-bottom-left-radius: 0px;
+}
+
+.btn-group : hover{
+	border: none;
 
 }
