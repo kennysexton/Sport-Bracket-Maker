@@ -206,21 +206,12 @@ function resetDropdown(element){
 	element.setAttribute("seed", defaultSeed)
 }
 
-// TODO improve so that you don't need to passs in the tier,  maybe just a set of numbers to replace
 function replaceUnusedSeeds(newSeed, tier){
 
 	if(tier == 'upper'){
-		newSeed = newSeed.replace(/,/g, '');
-		newSeed = newSeed.replace(/1/g, '');
-		newSeed = newSeed.replace(/4/g, '');
-		newSeed = newSeed.replace(/5/g, '');
+		newSeed = newSeed.replace(/,|1|4|5/g, '');
 	} else { //tier = 'lower'
-		//TODO simplify
-		newSeed = newSeed.replace(/,/g, '');
-		newSeed = newSeed.replace(/2/g, '');
-		newSeed = newSeed.replace(/3/g, '');
-		newSeed = newSeed.replace(/6/g, '');
-		newSeed = newSeed.replace(/7/g, '');
+		newSeed = newSeed.replace(/,|2|3|6|7/g, '');
 	}
 
 	var buildSeed = ""

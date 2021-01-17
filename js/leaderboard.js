@@ -6,22 +6,25 @@ function leaderBoardLogic(){
   });	
 }
 
-
 function insertLeaderboardRow(userPick, resultPick, winnerDivision, index, user){
-  console.log(userPick, resultPick[index],winnerDivision)
-
+  var style = ""
+  
   if(resultPick[index] != 0){ // If zero - game has not been played
     if(index == 3){ //super bowl
       if(resultPick[7] == winnerDivision && userPick == resultPick[index]){
         correct++;
+        style = "correct"
       } else {
         wrong++;
+        style = "wrong"
       }
     }
     else if(userPick == resultPick[index]){
       correct++;
+      style = "correct"
     } else {
       wrong++;
+      style = "wrong"
     }
     total++;
   }
@@ -37,6 +40,7 @@ function insertLeaderboardRow(userPick, resultPick, winnerDivision, index, user)
     wrong = 0;
     total = 0;
   }
+  return style
 }
 
 function insertLeaderboardRowCode(user, correct, wrong, total){

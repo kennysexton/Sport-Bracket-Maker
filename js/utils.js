@@ -37,7 +37,6 @@ function parseJson(jsonObject){
 	}
 }
 
-//TODO make global
 function cleanInput(string){
 	let newString = ""
 	// remove dashes
