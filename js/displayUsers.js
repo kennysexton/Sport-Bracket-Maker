@@ -94,7 +94,6 @@ function populateReadOnlyBracket(userSubmissions) {
         }
 
         var gameStatus = insertLeaderboardRow(currentSeed,results.games, winnerDivision, index, objIndex)
-        console.log(gameStatus)
         $(this).addClass(gameStatus)
 
       });
