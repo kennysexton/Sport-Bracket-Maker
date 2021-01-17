@@ -93,7 +93,9 @@ function populateReadOnlyBracket(userSubmissions) {
           teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
         }
 
-        insertLeaderboardRow(currentSeed,results.games, winnerDivision, index, objIndex)
+        var gameStatus = insertLeaderboardRow(currentSeed,results.games, winnerDivision, index, objIndex)
+        console.log(gameStatus)
+        $(this).addClass(gameStatus)
 
       });
     }
