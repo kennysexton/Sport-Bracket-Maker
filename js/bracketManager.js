@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
 
 	// If results
-	if(0){
+	if(1){
 		leaderBoardLogic()
+      $('#submissionForm').hide()
 	} else {
 		newBracketLogic()
 	}

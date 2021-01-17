@@ -37,7 +37,6 @@ function parseJson(jsonObject){
 	}
 }
 
-
 //TODO make global
 function cleanInput(string){
 	let newString = ""
@@ -46,4 +45,9 @@ function cleanInput(string){
 	//remove underscores
 	newString = string.replace(/_/g, ' ');
 	return newString
+}
+
+// Gives a percentage as a string
+function getPercentage(part, total){
+  return part / total * 100 + "%";
 }
