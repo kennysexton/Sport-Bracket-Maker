@@ -7,7 +7,7 @@ function binarySearch(haystack, needle) {
 		return {};
 	}
 	while (a < b - 1) {
-		var c = (a + b) / 2 |0;
+		var c = (a + b) / 2 | 0;
 		if (needle < haystack[c].city) {
 			b = c;
 		} else {
@@ -15,12 +15,12 @@ function binarySearch(haystack, needle) {
 		}
 	}
 	//TODO check for this edge case.  multiple teams play in the same city edge case
-	if(haystack[a].city == 'Los Angeles' || haystack[a].city == 'New York'){
+	if (haystack[a].city == 'Los Angeles' || haystack[a].city == 'New York') {
 		return haystack[a]
-	} else if (haystack[a].city === needle){
+	} else if (haystack[a].city === needle) {
 		return haystack[a]
-	} else if (haystack[a+1].city === needle) {
-		return haystack[a+1]
+	} else if (haystack[a + 1].city === needle) {
+		return haystack[a + 1]
 	} else {
 		console.error("Something went wrong in binary search when searching for - " + needle)
 		return {}
@@ -28,16 +28,17 @@ function binarySearch(haystack, needle) {
 }
 
 // Grab json files
-function parseJson(jsonObject){
+function parseJson(jsonObject) {
 	try {
 		return jsonObject
 	} catch (e) {
-		console.error("Failed to parse JSON: " + e )
+		console.error("Failed to parse JSON: " + e)
 		return null
 	}
 }
 
-function cleanInput(string){
+// Remove spaces in names so that the code doesn't break
+function cleanInput(string) {
 	let newString = ""
 	// remove dashes
 	newString = string.replace(/-/g, ' ');
@@ -47,6 +48,6 @@ function cleanInput(string){
 }
 
 // Gives a percentage as a string
-function getPercentage(part, total){
-  return Math.round(part / total * 100) + "%";
+function getPercentage(part, total) {
+	return Math.round(part / total * 100) + "%";
 }
