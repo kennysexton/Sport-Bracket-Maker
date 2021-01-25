@@ -48,5 +48,5 @@ function cleanInput(string){
 
 // Gives a percentage as a string
 function getPercentage(part, total){
-  return part / total * 100 + "%";
+  return Math.round(part / total * 100) + "%";
 }
