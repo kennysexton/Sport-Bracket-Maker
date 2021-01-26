@@ -116,10 +116,15 @@ function populateReadOnlyBracket(userSubmissions) {
           teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
         }
 
-        // Testing out a new solution
-//        var gameStatus = insertLeaderboardRow(currentSeed,results.games, winnerDivision, index, objIndex)
-//        $(this).addClass(gameStatus)
-
+        // Show if picks are correct or wrong
+        switch(userSubmissions[i].style[index]){
+          case 1: $(this).addClass('correct')
+            break;
+          case 2: $(this).addClass('wrong')
+            break;
+          default: //do nothing
+            break;
+        }
       });
     }
   }
