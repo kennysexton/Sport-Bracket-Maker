@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(){
   // Grab users JSON data
   const Http = new XMLHttpRequest();
   const url='https://express-api-app.herokuapp.com/users';
-  Http.open("GET", url);
+  Http.open("GET", url, true);
   Http.send();
 
   Http.onreadystatechange =function(){
