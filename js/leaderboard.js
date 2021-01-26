@@ -1,10 +1,11 @@
 var total = 0, correct = 0, wrong = 0;
 
 function leaderBoardLogic(){
+  insertLeaderboardRows()
   $('#bracket-replace').load('htmlSegments/leaderboard.html', function() {
     $('#home-tab').text("Leaderboard")
   });	
-  insertLeaderboardRows()
+  
 }
 
 function insertLeaderboardRows(){

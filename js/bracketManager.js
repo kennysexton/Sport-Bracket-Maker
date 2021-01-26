@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function(){
 function newBracketLogic(){
 	$('#bracket-replace').load('htmlSegments/bracket.html', function() {
 
-
 		// Grab team JSON datas
 		var teams = parseJson(data)
 		var result = parseJson(results)

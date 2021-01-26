@@ -89,7 +89,6 @@ function populateReadOnlyBracket(userSubmissions) {
           console.error("User submission: " + objIndex + " is not the correct length")
         }
 
-
       choices.each(function(index) {
 
         var currentSeed = userSubmissions[i].picks.charAt(index) 
@@ -122,14 +121,13 @@ function populateReadOnlyBracket(userSubmissions) {
             break;
           case 2: $(this).addClass('wrong')
             break;
-          default: //do nothing
+          default: //not played - do nothing
             break;
         }
       });
     }
   }
 }
-
 
 function getIdFromSelector(selectorString){
   return selectorString.split('-').pop()
