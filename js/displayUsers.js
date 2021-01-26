@@ -116,8 +116,9 @@ function populateReadOnlyBracket(userSubmissions) {
           teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
         }
 
-        var gameStatus = insertLeaderboardRow(currentSeed,results.games, winnerDivision, index, objIndex)
-        $(this).addClass(gameStatus)
+        // Testing out a new solution
+//        var gameStatus = insertLeaderboardRow(currentSeed,results.games, winnerDivision, index, objIndex)
+//        $(this).addClass(gameStatus)
 
       });
     }
