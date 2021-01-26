@@ -20,6 +20,13 @@ button {
   background-color: #444;
 }
 
+
+h5 {
+  margin-top: -50px;
+  font-size: 0.85rem;
+  color: #5F5F63;
+}
+
 p {
   width: 100%;
   border-radius: 5px;
@@ -110,5 +117,4 @@ h1 {
 
 .btn-group : hover{
 	border: none;
-
 }

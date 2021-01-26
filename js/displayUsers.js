@@ -6,17 +6,17 @@ var tabLength = 0;
 
 document.addEventListener("DOMContentLoaded", function(){
 
-  // Grab users JSON data
-  const Http = new XMLHttpRequest();
-  const url='https://express-api-app.herokuapp.com/users';
-  Http.open("GET", url, true);
-  Http.send();
-
-  Http.onreadystatechange =function(){
-    if (Http.readyState == 4 && Http.status == 200){
-      displayUserTabs(Http.responseText)
-    } 
-  }
+//  // Grab users JSON data
+//  const Http = new XMLHttpRequest();
+//  const url='https://express-api-app.herokuapp.com/users';
+//  Http.open("GET", url, true);
+//  Http.send();
+//
+//  Http.onreadystatechange =function(){
+//    if (Http.readyState == 4 && Http.status == 200){
+//      displayUserTabs(Http.responseText)
+//    } 
+//  }
 });
 
 function displayUserTabs(response){
@@ -30,7 +30,6 @@ function displayUserTabs(response){
   for(i=0; i< tabLength; i++) { 
     var user = userSubmissions[i];
     var name = user.name
-    console.log(user.name)
 
     // Create a tab per submission
     $("#myTab").append("<li class='nav-item user'><a class='nav-link' id='"+name+"-tab' data-toggle='tab' href='#"+name+"' role='tab' aria-controls='"+name+"' aria-selected='false'>"+cleanInput(name)+"</a></li>")
