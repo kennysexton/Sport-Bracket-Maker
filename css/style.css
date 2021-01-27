@@ -6,15 +6,15 @@ button{
   border-radius: 5px;
   color: #FFF;
   margin: 5% 0%;
-  padding: 2% 6% 0% 6%;
+  padding: 2% 5% 0% 5%;
   font-size: 1.2em;
   white-space: nowrap;
 }
 
 #line {
   height: 4px;
-  width: 112%;
-  margin: 0% -6%;
+  width: 110%;
+  margin: 0% -5%;
   border-radius: 0px 0px 6px 6px;
 }
 
