@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="css/sticky-footer.css" rel="stylesheet">
     <link href="css/spinner.css" rel="stylesheet">
+    <link href="css/tabs.css" rel="stylesheet">
 
   </head>
 
@@ -27,11 +28,14 @@
 
       <h1 class="text-center mt-3 mb-5">2020 NFL Playoffs</h1>
 
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active font-weight-bold" id="home-tab" data-toggle="tab" href="#newUser" role="tab" aria-controls="home" aria-selected="true">New User</a>
-        </li>
-      </ul>
+      <div class="scroller scroller-left float-left"><object type="image/svg+xml" data="icons/chevron-left-solid.svg"></object></div>
+      <div class="scroller scroller-right float-right"><object type="image/svg+xml" data="icons/chevron-right-solid.svg"></object></div>
+      <div class="wrapper">
+        <nav class="nav nav-tabs list" id="myTab" role="tablist">
+          <a class="nav-link nav-item active font-weight-bold" id="home-tab" data-toggle="tab" href="#newUser" role="tab" aria-controls="home" aria-selected="true">New User</a>
+        </nav>
+      </div>
+
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="newUser" role="tabpanel" aria-labelledby="home-tab">
 
@@ -70,7 +74,7 @@
 
     <footer class="footer">
       <div class="text-center">
-        <span class="text-muted"></span>Created by <a href="https://kennysexton.com" target="_blank">Kenny Sexton</a> project hosted on <a href="https://github.com/kennysexton/Sport-Bracket-Maker" target="_blank">github</a></span>
+        <span class="text-muted">Created by <a href="https://kennysexton.com" target="_blank">Kenny Sexton</a> project hosted on <a href="https://github.com/kennysexton/Sport-Bracket-Maker" target="_blank">github</a></span>
       </div>
     </footer>
 
@@ -84,6 +88,7 @@
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/displayUsers.js"></script>
     <script type="text/javascript" src="js/leaderboard.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
 
   </body>
 </html>

@@ -32,7 +32,7 @@ function displayUserTabs(response){
     var name = user.name
 
     // Create a tab per submission
-    $("#myTab").append("<li class='nav-item user'><a class='nav-link' id='"+name+"-tab' data-toggle='tab' href='#"+name+"' role='tab' aria-controls='"+name+"' aria-selected='false'>"+cleanInput(name)+"</a></li>")
+    $("#myTab").append("<a class='nav-link nav-item user' id='"+name+"-tab' data-toggle='tab' href='#"+name+"' role='tab' aria-controls='"+name+"' aria-selected='false'>"+cleanInput(name)+"</a>")
 
     $("#myTabContent").append("<div class='tab-pane fade' id='"+name+"' role='tabpanel' aria-labelledby='"+name+"-tab'><div id='bracket-viewonly-replace-"+name+"' class='text-center'>TODO - spinner on load</div></div>")
 
@@ -55,6 +55,7 @@ function displayUserTabs(response){
     });
     j++
   }
+  loadNav()
 }
 
 // Used for displaying users picks
