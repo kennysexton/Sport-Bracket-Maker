@@ -6,17 +6,17 @@ var tabLength = 0;
 
 document.addEventListener("DOMContentLoaded", function(){
 
-//  // Grab users JSON data
-//  const Http = new XMLHttpRequest();
-//  const url='https://express-api-app.herokuapp.com/users';
-//  Http.open("GET", url, true);
-//  Http.send();
-//
-//  Http.onreadystatechange =function(){
-//    if (Http.readyState == 4 && Http.status == 200){
-//      displayUserTabs(Http.responseText)
-//    } 
-//  }
+  // Grab users JSON data
+  const Http = new XMLHttpRequest();
+  const url='https://express-api-app.herokuapp.com/users';
+  Http.open("GET", url, true);
+  Http.send();
+
+  Http.onreadystatechange =function(){
+    if (Http.readyState == 4 && Http.status == 200){
+      displayUserTabs(Http.responseText)
+    } 
+  }
 });
 
 function displayUserTabs(response){
