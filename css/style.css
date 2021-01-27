@@ -1,19 +1,21 @@
-
-button {
+button{ 
   border: 0px;
+}
+
+#bracket-snippet button {
   border-radius: 5px;
   color: #FFF;
   margin: 5% 0%;
-  padding: 1% 5% 0% 5%;
-  font-size: 1.1em;
+  padding: 2% 6% 0% 6%;
+  font-size: 1.2em;
   white-space: nowrap;
 }
 
 #line {
   height: 4px;
-  width: 110%;
-  margin: 0% -5%;
-  border-radius: 0px 0px 5px 5px;
+  width: 112%;
+  margin: 0% -6%;
+  border-radius: 0px 0px 6px 6px;
 }
 
 .drop-item{ 
@@ -31,7 +33,7 @@ p {
   width: 100%;
   border-radius: 5px;
   height: 100%;
-  padding: 0% 5% ;
+  padding: 0% 5%;
   color: #FFF;
   margin-bottom: 5px;
 }
@@ -99,7 +101,7 @@ h1 {
 }
 
 .correct{
-  border-left: 6px solid green;
+  border-left: 6px solid green; !important
 }
 
 .correct #line {
@@ -120,7 +122,7 @@ h1 {
 }
 
 @media only screen and (max-width: 960px) {
-  button {
+  #bracket-snippet button {
     margin: 15% 0%;
   }
 }
