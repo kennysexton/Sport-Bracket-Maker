@@ -1,8 +1,9 @@
+
 button {
   border: 0px;
   border-radius: 5px;
   color: #FFF;
-  margin: 0;
+  margin: 5% 0%;
   padding: 1% 5% 0% 5%;
   font-size: 1.1em;
   white-space: nowrap;
@@ -19,7 +20,6 @@ button {
   white-space: nowrap;
   background-color: #444;
 }
-
 
 h5 {
   margin-top: -50px;
@@ -117,4 +117,10 @@ h1 {
 
 .btn-group : hover{
 	border: none;
+}
+
+@media only screen and (max-width: 960px) {
+  button {
+    margin: 15% 0%;
+  }
 }
