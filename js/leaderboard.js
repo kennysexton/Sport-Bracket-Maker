@@ -21,7 +21,7 @@ function populateLeaderBoard(response){
   $('#spinner').remove();
 
   for(var i=0; i<Object.keys(userSubmissions).length; i++){
-    var userClean = cleanInput(userSubmissions[i].name)
+    var userClean = cleanInputReverse(userSubmissions[i].name)
     var wins = userSubmissions[i].wins
     var loses = userSubmissions[i].loses
     var total = userSubmissions[i].total

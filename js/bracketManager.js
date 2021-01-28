@@ -242,7 +242,7 @@ function checkifAllChociesAreMade(){
 function validateForm(){
 
   // Check that name is not blank
-  if(!$("#username").val()) {
+  if(!$("#name").val()) {
     console.warn("Warning! Bracket does not have a name")
 
     $("#warning").removeClass('invisible');
@@ -260,8 +260,14 @@ function validateForm(){
   // Get if the picked winner was AFC or NFC
   var winner = $("button[round='SB']").attr('division')
   seedList += winner
+  
+  // Remove spaces from names
+  cleanName = cleanInput($("#name").val())
+  
 
   $('#picks').val(seedList)
+  $('#name').val(cleanName)
+  
 
   console.log(seedList)
 }

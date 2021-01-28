@@ -52,13 +52,21 @@ function httpGet(url, callback){
   };
 }
 
-// Remove spaces in names so that the code doesn't break
-function cleanInput(string) {
+// Re-Add spaces and other problem character
+function cleanInputReverse(string) {
   let newString = ""
   // remove dashes
   newString = string.replace(/-/g, ' ');
   //remove underscores
   newString = string.replace(/_/g, ' ');
+  return newString
+}
+
+// Remove spaces in names so that the code doesn't break
+function cleanInput(string) {
+  let newString = ""
+  // remove spaces
+  newString = string.replace(/ /g, '_');
   return newString
 }
 
