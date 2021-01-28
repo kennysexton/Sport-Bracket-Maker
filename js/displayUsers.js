@@ -79,13 +79,17 @@ function populateReadOnlyBracket(userSubmissions) {
 
       objIndex = getIdFromSelector(selectorArray[i])
 
-
       // Round 1 (qualified teams)
       var afcStorageArray = firstRoundPopulate(afcRound1Array,teams, result.afcRound1)
       var nfcStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.nfcRound1)
 
       var choicesSelect = selectorArray[i] +" button[round]"
       var choices=$(choicesSelect)
+
+      //Debugging
+      console.log("i: " + i);
+      console.log("userSubmissions[i] " + userSubmissions[i])
+      console.log("userSubmissions[i].picks " + userSubmissions[i].picks)
 
       // Check that submissions are in the correct format
       if(userSubmissions[i].picks.length == 8){

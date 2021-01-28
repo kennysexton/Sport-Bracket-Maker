@@ -276,7 +276,6 @@ $("#submissionForm").submit(function(e) {
     {
       console.log("POST Sent!") 
       $("#message").removeClass('d-none');
-      $("#message").text("Bracket submitted for " + data.name)
 
       // Pull tabs again
       loadUserTabs()
