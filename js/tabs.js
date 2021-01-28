@@ -14,7 +14,7 @@ var widthOfList = function(){
 var widthOfHidden = function(){
   var ww = 0 - $('.wrapper').outerWidth();
   var hw = (($('.wrapper').outerWidth())-widthOfList()-getLeftPosi())-scrollBarWidths;
-  var rp = $(document).width() - ($('.nav-item.nav-link').last().offset().left + $('.nav-item.nav-link').last().outerWidth());
+  var rp = $('#main').width() - ($('.nav-item.nav-link').last().offset().left + $('.nav-item.nav-link').last().outerWidth());
 
   if (ww>hw) {
     //return ww;
@@ -42,7 +42,7 @@ var getLeftPosi = function(){
 var reAdjust = function(){
 
   // check right pos of last nav item
-  var rp = $(document).width() - ($('.nav-item.nav-link').last().offset().left + $('.nav-item.nav-link').last().outerWidth());
+  var rp = $('#main').width() - ($('.nav-item.nav-link').last().offset().left + $('.nav-item.nav-link').last().outerWidth());
   if (($('.wrapper').outerWidth()) < widthOfList() && (rp<0)) {
     $('.scroller-right').show().css('display', 'flex');
   }

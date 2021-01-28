@@ -53,7 +53,7 @@ function httpGet(url, callback){
 }
 
 // Re-Add spaces and other problem character
-function cleanInputReverse(string) {
+function removeSpaces(string) {
   let newString = ""
   // remove dashes
   newString = string.replace(/-/g, ' ');

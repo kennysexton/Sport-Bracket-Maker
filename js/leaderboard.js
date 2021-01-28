@@ -21,12 +21,12 @@ function populateLeaderBoard(response){
   $('#spinner').remove();
 
   for(var i=0; i<Object.keys(userSubmissions).length; i++){
-    var userClean = cleanInputReverse(userSubmissions[i].name)
+    var user = userSubmissions[i].name
     var wins = userSubmissions[i].wins
     var loses = userSubmissions[i].loses
     var total = userSubmissions[i].total
 
-    $("#table-append").append("<tr><th scope='row'>"+(i+1)+"</th><th scope='row'>"+userClean+"</th><td>"+wins+"</td><td>"+loses+"</td><td>"+total+"</td><td>"+getPercentage(wins, total)+"</td></tr>")
+    $("#table-append").append("<tr><th scope='row'>"+(i+1)+"</th><th scope='row'>"+user+"</th><td>"+wins+"</td><td>"+loses+"</td><td>"+total+"</td><td>"+getPercentage(wins, total)+"</td></tr>")
   }
   
 }

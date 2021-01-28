@@ -30,14 +30,15 @@ function displayUserTabs(response){
   for(i=0; i< tabLength; i++) { 
     var user = userSubmissions[i];
     var name = user.name
+    var nameNoSpaces = cleanInput(name)
 
     // Create a tab per submission
-    $("#myTab").append("<a class='nav-link nav-item user' id='"+name+"-tab' data-toggle='tab' href='#"+name+"' role='tab' aria-controls='"+name+"' aria-selected='false'>"+cleanInputReverse(name)+"</a>")
+    $("#myTab").append("<a class='nav-link nav-item user' id='"+nameNoSpaces+"-tab' data-toggle='tab' href='#"+nameNoSpaces+"' role='tab' aria-controls='"+nameNoSpaces+"' aria-selected='false'>"+name+"</a>")
 
-    $("#myTabContent").append("<div class='tab-pane fade' id='"+name+"' role='tabpanel' aria-labelledby='"+name+"-tab'><div id='bracket-viewonly-replace-"+name+"' class='text-center'>TODO - spinner on load</div></div>")
+    $("#myTabContent").append("<div class='tab-pane fade' id='"+nameNoSpaces+"' role='tabpanel' aria-labelledby='"+nameNoSpaces+"-tab'><div id='bracket-viewonly-replace-"+nameNoSpaces+"' class='text-center'></div></div>")
 
     // Populate dropdowns with the previously selected result
-    var selector = '#bracket-viewonly-replace-' +name;
+    var selector = '#bracket-viewonly-replace-' +nameNoSpaces;
 
     selectorArray[j] = selector
 

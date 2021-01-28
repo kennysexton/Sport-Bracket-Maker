@@ -239,16 +239,7 @@ function checkifAllChociesAreMade(){
   }
 }
 
-function validateForm(){
-
-  // Check that name is not blank
-  if(!$("#name").val()) {
-    console.warn("Warning! Bracket does not have a name")
-
-    $("#warning").removeClass('invisible');
-    event.preventDefault();
-    return false
-  }
+function setPicksInput(){
 
   var seedList = ""
   var choices=$(".dropdown-toggle[seed]")
@@ -261,13 +252,7 @@ function validateForm(){
   var winner = $("button[round='SB']").attr('division')
   seedList += winner
   
-  // Remove spaces from names
-  cleanName = cleanInput($("#name").val())
-  
-
+  // Set picks inputs
   $('#picks').val(seedList)
-  $('#name').val(cleanName)
   
-
-  console.log(seedList)
 }
