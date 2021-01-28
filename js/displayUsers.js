@@ -6,6 +6,10 @@ var tabLength = 0;
 
 document.addEventListener("DOMContentLoaded", function(){
 
+  loadUserTabs();
+});
+
+function loadUserTabs(){
   // Grab users JSON data
   const Http = new XMLHttpRequest();
   const url='https://express-api-app.herokuapp.com/users';
@@ -17,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function(){
       displayUserTabs(Http.responseText)
     } 
   }
-});
-
+}
 function displayUserTabs(response){
   userSubmissions = JSON.parse(response)
   console.log(userSubmissions)
@@ -55,6 +58,7 @@ function displayUserTabs(response){
 
     });
     j++
+    console.log("Loaded user: " + name)
   }
   loadNav()
 }

@@ -239,20 +239,48 @@ function checkifAllChociesAreMade(){
   }
 }
 
-function setPicksInput(){
-
-  var seedList = ""
+function getPickStringFromUi(){
+  var picksString = ""
   var choices=$(".dropdown-toggle[seed]")
 
   choices.each(function( index ) {
-    seedList += $( this ).attr('seed')
+    picksString += $( this ).attr('seed')
   });
 
   // Get if the picked winner was AFC or NFC
   var winner = $("button[round='SB']").attr('division')
-  seedList += winner
-  
-  // Set picks inputs
-  $('#picks').val(seedList)
-  
+  picksString += winner
+
+  return picksString
 }
+
+// this is the id of the form
+$("#submissionForm").submit(function(e) {
+
+  e.preventDefault(); // avoid to execute the actual submit of the form.
+
+  var picksString = getPickStringFromUi();
+
+  // Set picks inputs
+  $('#picks').val(picksString)
+
+  // AJAX Submit
+  var form = $(this);
+  var url = form.attr('action');
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(), // serializes the form's elements.
+    success: function(data)
+    {
+      console.log("POST Sent!") 
+      $("#message").removeClass('d-none');
+      $("#message").text("Bracket submitted for " + data.name)
+
+      // Pull tabs again
+      loadUserTabs()
+//      newBracketLogic()
+    }
+  });
+});
