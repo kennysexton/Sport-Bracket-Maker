@@ -1,7 +1,7 @@
 var selectorArray = [];
 var j =  0;
 var successCounter = 0;
-var tabLength = 0;
+var successCounter = 0;
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -14,6 +14,8 @@ function reloadUserTabs(){
   // Start with zeros out variables
   selectorArray = [];
   j =  0;
+  successCounter = 0;
+  successCounter = 0;
 
   // Remove previous tabs
   $('#home-tab').siblings().remove();
