@@ -17,6 +17,7 @@ Tool for making brackets for American professional sports playoffs.
 
 **Heroku** - Used for hosting an API endpoint.  Using [kaffine](http://kaffeine.herokuapp.com/) to keep Heroku from sleeping after 30 minutes of inactivity ([free tier apps do not stay warm](https://express-api-app.herokuapp.com/)).
 
+<br>
 
 ### Technology
 
