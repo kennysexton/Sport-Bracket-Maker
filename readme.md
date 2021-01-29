@@ -1,6 +1,6 @@
 # Sport Bracket Maker
 
-Tool for making brackets for American professional sports playoffs
+Tool for making brackets for American professional sports playoffs.
 
 ### Sports (only NFL so far)
 - [x] NFL 🏈
@@ -11,11 +11,15 @@ Tool for making brackets for American professional sports playoffs
 
 
 
+## Architecture
 
-## API solution
+### Hosting
+**Github pages** - Where the static portion of the application is hosted (html,css,js).
+
+**Heroku** - Used for hosting an API endpoint.  Using [kaffine](http://kaffeine.herokuapp.com/) to keep Heroku from sleeping after 30 minutes of inactivity (free tier apps do not stay warm).
 
 
+### Technology
+**Node & Express** - REST routing and operations of the API
 
-##### Helpful links
-- Using node server-json package https://dev.to/myogeshchavan97/how-to-easily-create-and-host-your-own-rest-api-without-writing-a-single-line-of-code-2np4
-- Using glitch to run server-json for free https://juliangaramendy.dev/blog/json-server-glitch
+**MongoDB** - Persistent storage of data.
