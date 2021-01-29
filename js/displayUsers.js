@@ -1,28 +1,64 @@
 var selectorArray = [];
 var j =  0;
 var successCounter = 0;
-var tabLength = 0;
-
+var successCounter = 0;
 
 document.addEventListener("DOMContentLoaded", function(){
 
+  // Kick of request for users
+  loadUserTabs();
+});
+
+// Clear previous data on reload
+function reloadUserTabs(){
+  // Start with zeros out variables
+  selectorArray = [];
+  j =  0;
+  successCounter = 0;
+  successCounter = 0;
+
+  // Remove previous tabs
+  $('#home-tab').siblings().remove();
+  loadUserTabs();
+}
+
+// Get users in default order
+function loadUserTabs(){
   // Grab users JSON data
-  var userSubmissions = parseJson(userPicks);
+  const Http = new XMLHttpRequest();
+  const url='https://express-api-app.herokuapp.com/users';
+  Http.open("GET", url, true);
+  Http.send();
+
+  Http.onreadystatechange =function(){
+    if (Http.readyState == 4 && Http.status == 200){
+      displayUserTabs(Http.responseText)
+    } 
+  }
+}
+
+// Logic for appending HTML
+function displayUserTabs(response){
+  userSubmissions = JSON.parse(response)
+  console.log(userSubmissions)
 
   tabLength = Object.keys(userSubmissions).length
   console.log("Number of user tabs: " + tabLength)
 
-  // itirate over keys
-  for (i in userSubmissions) { 
+  //   itirate over keys
+  for(i=0; i< tabLength; i++) { 
+    var user = userSubmissions[i];
+    var name = user.name
+    var nameNoSpaces = cleanInput(name)
 
     // Create a tab per submission
-    $("#myTab").append("<li class='nav-item user'><a class='nav-link' id='"+i+"-tab' data-toggle='tab' href='#"+i+"' role='tab' aria-controls='"+i+"' aria-selected='false'>"+cleanInput(i)+"</a></li>")
+    $("#myTab").append("<a class='nav-link nav-item user' id='"+nameNoSpaces+"-tab' data-toggle='tab' href='#"+nameNoSpaces+"' role='tab' aria-controls='"+nameNoSpaces+"' aria-selected='false'>"+name+"</a>")
 
-    $("#myTabContent").append("<div class='tab-pane fade' id='"+i+"' role='tabpanel' aria-labelledby='"+i+"-tab'><div id='bracket-viewonly-replace-"+i+"' class='text-center'>TODO - spinner on load</div></div>")
+    $("#myTabContent").append("<div class='tab-pane fade' id='"+nameNoSpaces+"' role='tabpanel' aria-labelledby='"+nameNoSpaces+"-tab'><div id='bracket-viewonly-replace-"+nameNoSpaces+"' class='text-center'></div></div>")
 
     // Populate dropdowns with the previously selected result
-    var selector = '#bracket-viewonly-replace-' +i;
-    //		console.log("Selector: " + selector)
+    var selector = '#bracket-viewonly-replace-' +nameNoSpaces;
+
     selectorArray[j] = selector
 
     $(selector).load('htmlSegments/bracket.html', function (response, status) {
@@ -39,7 +75,8 @@ document.addEventListener("DOMContentLoaded", function(){
     });
     j++
   }
-});
+  loadNav()
+}
 
 // Used for displaying users picks
 function populateReadOnlyBracket(userSubmissions) {
@@ -57,25 +94,24 @@ function populateReadOnlyBracket(userSubmissions) {
 
       objIndex = getIdFromSelector(selectorArray[i])
 
-
       // Round 1 (qualified teams)
       var afcStorageArray = firstRoundPopulate(afcRound1Array,teams, result.afcRound1)
       var nfcStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.nfcRound1)
 
       var choicesSelect = selectorArray[i] +" button[round]"
       var choices=$(choicesSelect)
-			
-			// Check that submissions are in the correct format
-      if(userSubmissions[objIndex].length == 8){
-				var winnerDivision = userSubmissions[objIndex].charAt(7) 
-			} else {
-				console.error("User submission: " + objIndex + " is not the correct length")
-			}
-      
+
+
+      // Check that submissions are in the correct format
+      if(userSubmissions[i].picks.length == 8){
+        var winnerDivision = userSubmissions[i].picks.charAt(7) 
+        } else {
+          console.error("User submission: " + objIndex + " is not the correct length")
+        }
 
       choices.each(function(index) {
 
-        var currentSeed = userSubmissions[objIndex].charAt(index) 
+        var currentSeed = userSubmissions[i].picks.charAt(index) 
         $(this).attr('seed', currentSeed)
 
         // Remove some classes & attributes
@@ -83,8 +119,8 @@ function populateReadOnlyBracket(userSubmissions) {
         $(this).removeClass('btn')
         $(this).removeAttr('aria-haspopup')
         $(this).removeAttr('data-toggle')
-				$(this).removeClass('btn-danger')
-				$(this).removeClass('btn-primary')
+        $(this).removeClass('btn-danger')
+        $(this).removeClass('btn-primary')
 
         // AFC
         if(index == 3){
@@ -93,21 +129,25 @@ function populateReadOnlyBracket(userSubmissions) {
           } else {
             teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
           }
-
         } else if (index == 0 || index == 2 || index == 5){ //AFC
           teamStyleLogic(afcStorageArray[currentSeed], $(this).get(0))
         } else {
           teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
         }
 
-        var gameStatus = insertLeaderboardRow(currentSeed,results.games, winnerDivision, index, objIndex)
-        $(this).addClass(gameStatus)
-
+        // Show if picks are correct or wrong
+        switch(userSubmissions[i].style[index]){
+          case 1: $(this).addClass('correct')
+            break;
+          case 2: $(this).addClass('wrong')
+            break;
+          default: //not played - do nothing
+            break;
+        }
       });
     }
   }
 }
-
 
 function getIdFromSelector(selectorString){
   return selectorString.split('-').pop()

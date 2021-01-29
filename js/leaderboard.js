@@ -1,50 +1,32 @@
 var total = 0, correct = 0, wrong = 0;
 
 function leaderBoardLogic(){
+  const url='https://express-api-app.herokuapp.com/users?sort=-1';
+
   $('#bracket-replace').load('htmlSegments/leaderboard.html', function() {
+    // Change tab
     $('#home-tab').text("Leaderboard")
-  });	
+  });
+
+  // Async receive leaderboard
+  httpGet(url, populateLeaderBoard)	
+
 }
 
-function insertLeaderboardRow(userPick, resultPick, winnerDivision, index, user){
-  var style = ""
+function populateLeaderBoard(response){
+  userSubmissions = JSON.parse(response)
+  console.log(userSubmissions)
+
+  // Remove spinner
+  $('#spinner').remove();
+
+  for(var i=0; i<Object.keys(userSubmissions).length; i++){
+    var user = userSubmissions[i].name
+    var wins = userSubmissions[i].wins
+    var loses = userSubmissions[i].loses
+    var total = userSubmissions[i].total
+
+    $("#table-append").append("<tr><th scope='row'>"+(i+1)+"</th><th scope='row'>"+user+"</th><td>"+wins+"</td><td>"+loses+"</td><td>"+total+"</td><td>"+getPercentage(wins, total)+"</td></tr>")
+  }
   
-  if(resultPick[index] != 0){ // If zero - game has not been played
-    if(index == 3){ //super bowl
-      if(resultPick[7] == winnerDivision && userPick == resultPick[index]){
-        correct++;
-        style = "correct"
-      } else {
-        wrong++;
-        style = "wrong"
-      }
-    }
-    else if(userPick == resultPick[index]){
-      correct++;
-      style = "correct"
-    } else {
-      wrong++;
-      style = "wrong"
-    }
-    total++;
-  }
-
-  // Publish results for user.  and move on
-  if(index == 6){
-
-    // Insert a row in the leaderboard table
-    insertLeaderboardRowCode(user, correct, wrong, total)
-
-    // Reset counters
-    correct = 0;
-    wrong = 0;
-    total = 0;
-  }
-  return style
-}
-
-function insertLeaderboardRowCode(user, correct, wrong, total){
-  var userClean = cleanInput(user)
-
-  $("#table-append").append("<tr><th scope='row'>"+userClean+"</th><td>"+correct+"</td><td>"+wrong+"</td><td>"+total+"</td><td>"+getPercentage(correct, total)+"</td></tr>")
 }
