@@ -278,7 +278,7 @@ $("#submissionForm").submit(function(e) {
       $("#message").removeClass('d-none');
 
       // Pull tabs again
-      loadUserTabs()
+      reloadUserTabs()
 //      newBracketLogic()
     }
   });

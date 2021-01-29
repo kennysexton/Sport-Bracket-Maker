@@ -3,12 +3,24 @@ var j =  0;
 var successCounter = 0;
 var tabLength = 0;
 
-
 document.addEventListener("DOMContentLoaded", function(){
 
+  // Kick of request for users
   loadUserTabs();
 });
 
+// Clear previous data on reload
+function reloadUserTabs(){
+  // Start with zeros out variables
+  selectorArray = [];
+  j =  0;
+
+  // Remove previous tabs
+  $('#home-tab').siblings().remove();
+  loadUserTabs();
+}
+
+// Get users in default order
 function loadUserTabs(){
   // Grab users JSON data
   const Http = new XMLHttpRequest();
@@ -22,6 +34,8 @@ function loadUserTabs(){
     } 
   }
 }
+
+// Logic for appending HTML
 function displayUserTabs(response){
   userSubmissions = JSON.parse(response)
   console.log(userSubmissions)
@@ -58,7 +72,6 @@ function displayUserTabs(response){
 
     });
     j++
-    console.log("Loaded user: " + name)
   }
   loadNav()
 }
@@ -86,10 +99,6 @@ function populateReadOnlyBracket(userSubmissions) {
       var choicesSelect = selectorArray[i] +" button[round]"
       var choices=$(choicesSelect)
 
-      //Debugging
-      console.log("i: " + i);
-      console.log("userSubmissions[i] " + userSubmissions[i])
-      console.log("userSubmissions[i].picks " + userSubmissions[i].picks)
 
       // Check that submissions are in the correct format
       if(userSubmissions[i].picks.length == 8){
