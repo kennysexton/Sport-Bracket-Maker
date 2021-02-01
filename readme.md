@@ -1,6 +1,9 @@
 # Sport Bracket Maker
 
-Tool for making brackets for American professional sports playoffs.
+![Webpage image](https://imgur.com/F6eZkCy.png)
+
+Tool for making sports playoff brackets.
+
 
 ### Sports (only NFL so far)
 - [x] NFL 🏈
