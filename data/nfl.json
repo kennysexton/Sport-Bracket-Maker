@@ -43,7 +43,6 @@ data = [
     "div": "South",
     "cPrim": "#0085CA",
     "cSecn": "#101820",
-
   },
   {
     "city": "Chicago",

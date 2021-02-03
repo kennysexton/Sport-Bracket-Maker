@@ -1,0 +1,152 @@
+[
+    {
+      "abr": "ATL",
+      "name": "Hawks",
+      "city": "Atlanta"
+    },
+    {
+      "abr": "BOS",
+      "name": "Celtics",
+      "city": "Boston"
+    },
+    {
+      "abr": "BKN",
+      "name": "Nets",
+      "city": "Brooklyn"
+    },
+    {
+      "abr": "CHA",
+      "name": "Hornets",
+      "city": "Charlotte"
+    },
+    {
+      "abr": "CHI",
+      "name": "Bulls",
+      "city": "Chicago"
+    },
+    {
+      "abr": "CLE",
+      "name": "Cavaliers",
+      "city": "Cleveland"
+    },
+    {
+      "abr": "DAL",
+      "name": "Mavericks",
+      "city": "Dallas"
+    },
+    {
+      "abr": "DEN",
+      "name": "Nuggets",
+      "city": "Denver"
+    },
+    {
+      "abr": "DET",
+      "name": "Pistons",
+      "city": "Detroit"
+    },
+    {
+      "abr": "GSW",
+      "name": "Warriors",
+      "city": "Golden State"
+    },
+    {
+      "abr": "HOU",
+      "name": "Rockets",
+      "city": "Houston"
+    },
+    {
+      "abr": "IND",
+      "name": "Pacers",
+      "city": "Indiana"
+    },
+    {
+      "abr": "LAC",
+      "name": "Clippers",
+      "city": "Los Angeles"
+    },
+    {
+      "abr": "LAL",
+      "name": "Lakers",
+      "city": "Los Angeles"
+    },
+    {
+      "abr": "MEM",
+      "name": "Grizzlies",
+      "city": "Memphis"
+    },
+    {
+      "abr": "MIA",
+      "name": "Heat",
+      "city": "Miami"
+    },
+    {
+      "abr": "MIL",
+      "name": "Bucks",
+      "city": "Milwaukee"
+    },
+    {
+      "abr": "MIN",
+      "name": "Timberwolves",
+      "city": "Minnesota"
+    },
+    {
+      "abr": "NOP",
+      "name": "Pelicans",
+      "city": "New Orleans"
+    },
+    {
+      "abr": "NYK",
+      "name": "Knicks",
+      "city": "New York"
+    },
+    {
+      "abr": "OKC",
+      "name": "Thunder",
+      "city": "Oklahoma City"
+    },
+    {
+      "abr": "ORL",
+      "name": "Magic",
+      "city": "Orlando"
+    },
+    {
+      "abr": "PHI",
+      "name": "76ers",
+      "city": "Philadelphia"
+    },
+    {
+      "abr": "PHX",
+      "name": "Suns",
+      "city": "Phoenix"
+    },
+    {
+      "abr": "POR",
+      "name": "Trail Blazers",
+      "city": "Portland"
+    },
+    {
+      "abr": "SAC",
+      "name": "Kings",
+      "city": "Sacramento"
+    },
+    {
+      "abr": "SAS",
+      "name": "Spurs",
+      "city": "San Antonio"
+    },
+    {
+      "abr": "TOR",
+      "name": "Raptors",
+      "city": "Toronto"
+    },
+    {
+      "abr": "UTA",
+      "name": "Jazz",
+      "city": "Utah"
+    },
+    {
+      "abr": "WAS",
+      "name": "Wizards",
+      "city": "Washington"
+    }
+  ]
