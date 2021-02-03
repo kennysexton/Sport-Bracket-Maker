@@ -175,7 +175,7 @@ data = [
     },
     {
         "name": "Golden Knights",
-        "city": "Las Vegas",
+        "city": "Vegas",
         "cPrim": "#B4975A",
         "cSecn": "#333F42",
     },
