@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-  // If results
-  if(1){
+  // 0 if pick window is still open
+  if(0){
     leaderBoardLogic()
     $('#submissionForm').hide()
   } else {
@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 });
 
+// Load default bracket
 function newBracketLogic(){
   $('#bracket-replace').load('htmlSegments/bracket.html', function() {
 
@@ -132,6 +133,7 @@ function superBowlPopulate(element, divisionStorage){
   styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage)
 }
 
+// Kicks of future games cascade
 function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 
   if(round.startsWith("A")){
@@ -142,6 +144,13 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
       teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+
+      // TODO: Cascade eliminated team to final game
+      // console.log("test block")
+      // var dropdownElement2 = $("#AFCSB")
+      // resetDropdown(dropdownElement2.get(0))
+      // dropdownElement2.attr('seed', seed);
+      // teamStyleLogic(afcStorageArray[seed],dropdownElement2.get(0))
 
     } else if(round.endsWith("4")){
 
@@ -188,12 +197,11 @@ function styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage){
       var appendedElement = backwardCheckLogic(seedArray[j], element);
       teamStyleLogic(divisionStorage[seedArray[j]],appendedElement)
 
+      // Superbowl only logic
       if(needsDivision){
         appendedElement.setAttribute("division", (element.getAttribute("id").substring(0, 1)))
       }
     }
-    // Superbowl only logic
-
   }
 }
 
@@ -279,7 +287,6 @@ $("#submissionForm").submit(function(e) {
 
       // Pull tabs again
       reloadUserTabs()
-//      newBracketLogic()
     }
   });
 });
