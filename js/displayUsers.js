@@ -95,8 +95,8 @@ function populateReadOnlyBracket(userSubmissions) {
       objIndex = getIdFromSelector(selectorArray[i])
 
       // Round 1 (qualified teams)
-      var afcStorageArray = firstRoundPopulate(afcRound1Array,teams, result.afcRound1)
-      var nfcStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.nfcRound1)
+      var aStorageArray = firstRoundPopulate(afcRound1Array,teams, result.aRound1)
+      var bStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.bRound1)
 
       var choicesSelect = selectorArray[i] +" button[round]"
       var choices=$(choicesSelect)
@@ -125,14 +125,14 @@ function populateReadOnlyBracket(userSubmissions) {
         // AFC
         if(index == 3){
           if(winnerDivision == 'A'){
-            teamStyleLogic(afcStorageArray[currentSeed], $(this).get(0))
+            teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
           } else {
-            teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
+            teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
           }
         } else if (index == 0 || index == 2 || index == 5){ //AFC
-          teamStyleLogic(afcStorageArray[currentSeed], $(this).get(0))
+          teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
         } else {
-          teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
+          teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
         }
 
         // Show if picks are correct or wrong

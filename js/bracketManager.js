@@ -23,31 +23,31 @@ function newBracketLogic(){
     var nfcRound1Array = document.getElementsByClassName("NFC");
     var nfcRound3Array = document.getElementsByClassName("NFC3");
     var nfcRound4Array = document.getElementsByClassName("NFC4");
-    var afcChampion = document.getElementById("AFCSB");
-    var nfcChampion = document.getElementById("NFCSB");
+    var aChampion = document.getElementById("AFinal");
+    var bChampion = document.getElementById("BFinal");
 
     // Stored local version of team seeds
-    var afcStorageArray = [];
-    var nfcStorageArray = [];
+    var aStorageArray = [];
+    var bStorageArray = [];
 
     // Remove spinner
     $('#spinner').remove();
 
     // Round 1 (qualified teams)
-    var afcStorageArray = firstRoundPopulate(afcRound1Array,teams, result.afcRound1)
-    var nfcStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.nfcRound1)
+    var aStorageArray = firstRoundPopulate(afcRound1Array,teams, result.aRound1)
+    var bStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.bRound1)
 
     // Round 3 (Division round)
-    multipleOptionsPopulate(afcRound3Array, afcStorageArray)
-    multipleOptionsPopulate(nfcRound3Array, nfcStorageArray)
+    multipleOptionsPopulate(afcRound3Array, aStorageArray)
+    multipleOptionsPopulate(nfcRound3Array, bStorageArray)
 
     // Round 4 (AFC/NFC Championship)
-    multipleOptionsPopulate(afcRound4Array, afcStorageArray)
-    multipleOptionsPopulate(nfcRound4Array, nfcStorageArray)
+    multipleOptionsPopulate(afcRound4Array, aStorageArray)
+    multipleOptionsPopulate(nfcRound4Array, bStorageArray)
 
     // Super Bowl
-    superBowlPopulate(afcChampion, afcStorageArray)
-    superBowlPopulate(nfcChampion, nfcStorageArray)
+    superBowlPopulate(aChampion, aStorageArray)
+    superBowlPopulate(bChampion, bStorageArray)
 
     $(function(){
       $(".dropdown-menu").on('click', 'p', function(){
@@ -65,7 +65,7 @@ function newBracketLogic(){
         }
 
         var round = dropdownButton.attr("round")
-        buttonUpdate(seed, round, afcStorageArray, nfcStorageArray);
+        buttonUpdate(seed, round, aStorageArray, bStorageArray);
         checkifAllChociesAreMade();
       });
     });
@@ -147,14 +147,14 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
 
       // TODO: Cascade eliminated team to final game
       // console.log("test block")
-      // var dropdownElement2 = $("#AFCSB")
+      // var dropdownElement2 = $("#AFinal")
       // resetDropdown(dropdownElement2.get(0))
       // dropdownElement2.attr('seed', seed);
       // teamStyleLogic(afcStorageArray[seed],dropdownElement2.get(0))
 
     } else if(round.endsWith("4")){
 
-      var dropdownElement = $('#AFCSB')
+      var dropdownElement = $('#AFinal')
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
       teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
@@ -168,13 +168,13 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
       teamStyleLogic(nfcStorageArray[seed],dropdownElement.get(0))
 
     } else if(round.endsWith("4")){
-      var dropdownElement = $('#NFCSB')
+      var dropdownElement = $('#BFinal')
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
       teamStyleLogic(nfcStorageArray[seed],dropdownElement.get(0))
     }
 
-  } else { // round = "SB"
+  } else { // round = "Championship Game / Superbowl"
     // No action needed.
   }
 }
