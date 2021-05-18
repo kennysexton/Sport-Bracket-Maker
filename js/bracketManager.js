@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
 
   // 0 if pick window is still open
-  if(0){
+  if (0) {
     leaderBoardLogic()
     $('#submissionForm').hide()
   } else {
@@ -10,19 +10,19 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 // Load default bracket
-function newBracketLogic(){
-  $('#bracket-replace').load('htmlSegments/bracket.html', function() {
+function newBracketLogic() {
+  $('#bracket-replace').load('htmlSegments/bracket.html', function () {
 
     // Grab team JSON datas
     var teams = parseJson(data)
     var result = parseJson(results)
 
-    var afcRound1Array = document.getElementsByClassName("AFC");
-    var afcRound3Array = document.getElementsByClassName("AFC3");
-    var afcRound4Array = document.getElementsByClassName("AFC4");
-    var nfcRound1Array = document.getElementsByClassName("NFC");
-    var nfcRound3Array = document.getElementsByClassName("NFC3");
-    var nfcRound4Array = document.getElementsByClassName("NFC4");
+    var aRound1Array = document.getElementsByClassName("A1");
+    var aRound3Array = document.getElementsByClassName("A3");
+    var aRound4Array = document.getElementsByClassName("A4");
+    var bRound1Array = document.getElementsByClassName("B1");
+    var bRound3Array = document.getElementsByClassName("B3");
+    var bRound4Array = document.getElementsByClassName("B4");
     var aChampion = document.getElementById("AFinal");
     var bChampion = document.getElementById("BFinal");
 
@@ -34,23 +34,23 @@ function newBracketLogic(){
     $('#spinner').remove();
 
     // Round 1 (qualified teams)
-    var aStorageArray = firstRoundPopulate(afcRound1Array,teams, result.aRound1)
-    var bStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.bRound1)
+    var aStorageArray = firstRoundPopulate(aRound1Array, teams, result.aRound1)
+    var bStorageArray = firstRoundPopulate(bRound1Array, teams, result.bRound1)
 
     // Round 3 (Division round)
-    multipleOptionsPopulate(afcRound3Array, aStorageArray)
-    multipleOptionsPopulate(nfcRound3Array, bStorageArray)
+    multipleOptionsPopulate(aRound3Array, aStorageArray)
+    multipleOptionsPopulate(bRound3Array, bStorageArray)
 
-    // Round 4 (AFC/NFC Championship)
-    multipleOptionsPopulate(afcRound4Array, aStorageArray)
-    multipleOptionsPopulate(nfcRound4Array, bStorageArray)
+    // Round 4 (A Bracket final / B Bracket final)
+    multipleOptionsPopulate(aRound4Array, aStorageArray)
+    multipleOptionsPopulate(bRound4Array, bStorageArray)
 
-    // Super Bowl
+    // Championship Game / Super Bowl
     superBowlPopulate(aChampion, aStorageArray)
     superBowlPopulate(bChampion, bStorageArray)
 
-    $(function(){
-      $(".dropdown-menu").on('click', 'p', function(){
+    $(function () {
+      $(".dropdown-menu").on('click', 'p', function () {
 
         var dropdownButton = $(this).parent().prev()
         var seed = $(this).attr("seed");
@@ -60,7 +60,7 @@ function newBracketLogic(){
         dropdownButton.text($(this).text());
         dropdownButton.css('background', $(this).css('background'));
         dropdownButton.attr('seed', seed)
-        if(division != null){
+        if (division != null) {
           dropdownButton.attr('division', division)
         }
 
@@ -73,22 +73,22 @@ function newBracketLogic(){
 }
 
 // Logic used for getting populating team buttons
-function teamStyleLogic(teamObject, divisionArrayElement){
+function teamStyleLogic(teamObject, divisionArrayElement) {
 
   // Change Box to match teams information
   divisionArrayElement.style.background = teamObject.cPrim;
-  divisionArrayElement.innerText = teamObject.city + " " +  teamObject.name;
+  divisionArrayElement.innerText = teamObject.city + " " + teamObject.name;
 
   // Line below name with secondary color
-  const firstSeedLine = document.createElement("div"); 
+  const firstSeedLine = document.createElement("div");
   firstSeedLine.setAttribute("id", "line")
-  divisionArrayElement.appendChild(firstSeedLine); 
+  divisionArrayElement.appendChild(firstSeedLine);
 
   firstSeedLine.style.background = teamObject.cSecn;
 }
 
-function backwardCheckLogic(seed, dropdownElement){
-  const appendDropdown = document.createElement("p"); 
+function backwardCheckLogic(seed, dropdownElement) {
+  const appendDropdown = document.createElement("p");
   appendDropdown.setAttribute("seed", seed)
   appendDropdown.setAttribute("class", "drop-item");
   appendDropdown.setAttribute("temporary", "");
@@ -96,54 +96,54 @@ function backwardCheckLogic(seed, dropdownElement){
   return appendDropdown;
 }
 
-function firstRoundPopulate(elementArray, teamsObject, resultObject){
+function firstRoundPopulate(elementArray, teamsObject, resultObject) {
   var storageArray = [];
-  for(var i=0; i< elementArray.length; i++){
+  for (var i = 0; i < elementArray.length; i++) {
 
     // Get the seed for the current html element
     seed = parseInt(elementArray[i].getAttribute("seed"))
 
     // Get the right team index
-    teamObject = binarySearch(teamsObject, resultObject[seed-1])
-    storageArray[seed] = teamObject 
+    teamObject = binarySearch(teamsObject, resultObject[seed - 1])
+    storageArray[seed] = teamObject
     teamStyleLogic(teamObject, elementArray[i])
   }
   return storageArray;
 }
 
-function secondRoundPopulate(elementArray,divisionStorage){
-  for(var i=0; i< elementArray.length; i++){
+function secondRoundPopulate(elementArray, divisionStorage) {
+  for (var i = 0; i < elementArray.length; i++) {
     seed = parseInt(elementArray[i].getAttribute("default"))
-    teamStyleLogic(divisionStorage[seed],elementArray[i])
+    teamStyleLogic(divisionStorage[seed], elementArray[i])
     elementArray[i].setAttribute("seed", seed)
   }
 }
 
-function multipleOptionsPopulate(elementArray,divisionStorage){
-  for(var i=0; i< elementArray.length; i++){
+function multipleOptionsPopulate(elementArray, divisionStorage) {
+  for (var i = 0; i < elementArray.length; i++) {
     seedString = elementArray[i].getAttribute("default")
 
     styleAndAppendOptionsIfNeeded(seedString, elementArray[i], divisionStorage)
   }
 }
 
-function superBowlPopulate(element, divisionStorage){
+function superBowlPopulate(element, divisionStorage) {
   seedString = element.getAttribute("default")
 
   styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage)
 }
 
 // Kicks of future games cascade
-function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
+function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
 
-  if(round.startsWith("A")){
-    if(round.endsWith("3")){
+  if (round.startsWith("A")) {
+    if (round.endsWith("3")) {
 
-      // Go to AFC3 relevant object
-      var dropdownElement = $(".AFC4[default*='"+seed+"']")
+      // Go to A3 relevant object
+      var dropdownElement = $(".A4[default*='" + seed + "']")
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
-      teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+      teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
 
       // TODO: Cascade eliminated team to final game
       // console.log("test block")
@@ -152,26 +152,26 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
       // dropdownElement2.attr('seed', seed);
       // teamStyleLogic(afcStorageArray[seed],dropdownElement2.get(0))
 
-    } else if(round.endsWith("4")){
+    } else if (round.endsWith("4")) {
 
       var dropdownElement = $('#AFinal')
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
-      teamStyleLogic(afcStorageArray[seed],dropdownElement.get(0))
+      teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
     }
-  }	else if ( round.startsWith("N")) {
-    if(round.endsWith("3")){
-      // Go to NFC3 relevant object
-      var dropdownElement = $(".NFC4[default*='"+seed+"']")
+  } else if (round.startsWith("B")) {
+    if (round.endsWith("3")) {
+      // Go to B3 relevant object
+      var dropdownElement = $(".B4[default*='" + seed + "']")
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
-      teamStyleLogic(nfcStorageArray[seed],dropdownElement.get(0))
+      teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
 
-    } else if(round.endsWith("4")){
+    } else if (round.endsWith("4")) {
       var dropdownElement = $('#BFinal')
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
-      teamStyleLogic(nfcStorageArray[seed],dropdownElement.get(0))
+      teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
     }
 
   } else { // round = "Championship Game / Superbowl"
@@ -179,35 +179,35 @@ function buttonUpdate(seed, round, afcStorageArray, nfcStorageArray){
   }
 }
 
-function styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage){
+function styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage) {
   var seedArray = seedString.split(",")
   var needsDivision = false;
 
-  if(element.hasAttribute("id")){
+  if (element.hasAttribute("id")) {
     needsDivision = true;
   }
 
-  for(var j=0; j<seedArray.length; j++){		
-    if(j == 0){ // No need to append for first option, just change the style
-      teamStyleLogic(divisionStorage[seedArray[j]],element)
+  for (var j = 0; j < seedArray.length; j++) {
+    if (j == 0) { // No need to append for first option, just change the style
+      teamStyleLogic(divisionStorage[seedArray[j]], element)
       element.setAttribute("seed", seedArray[j])
 
     } else { // every other option must be appended
       var appendedElement = backwardCheckLogic(seedArray[j], element);
-      teamStyleLogic(divisionStorage[seedArray[j]],appendedElement)
+      teamStyleLogic(divisionStorage[seedArray[j]], appendedElement)
 
       // Superbowl only logic
-      if(needsDivision){
+      if (needsDivision) {
         appendedElement.setAttribute("division", (element.getAttribute("id").substring(0, 1)))
       }
     }
   }
 }
 
-function resetDropdown(element){
+function resetDropdown(element) {
   sibling = element.nextElementSibling
 
-  while(sibling != null && sibling.hasAttribute("temporary") ){
+  while (sibling != null && sibling.hasAttribute("temporary")) {
     sibling.remove();
     sibling = element.nextElementSibling;
   }
@@ -215,8 +215,8 @@ function resetDropdown(element){
   element.setAttribute("seed", defaultSeed)
 }
 
-function replaceUnusedSeeds(newSeed, tier){
-  if(tier == 'upper'){
+function replaceUnusedSeeds(newSeed, tier) {
+  if (tier == 'upper') {
     newSeed = newSeed.replace(/,|1|4|5/g, '');
   } else { //tier = 'lower'
     newSeed = newSeed.replace(/,|2|3|6|7/g, '');
@@ -224,35 +224,35 @@ function replaceUnusedSeeds(newSeed, tier){
 
   var buildSeed = ""
 
-  for(var i=0; i<newSeed.length; i++){
-    if(i == 0){
-      buildSeed += newSeed.substring(i, i+1)
+  for (var i = 0; i < newSeed.length; i++) {
+    if (i == 0) {
+      buildSeed += newSeed.substring(i, i + 1)
     } else {
-      buildSeed +=  "," + newSeed.substring(i, i+1)
+      buildSeed += "," + newSeed.substring(i, i + 1)
     }
     console.log("building " + buildSeed)
   }
   return buildSeed;
 }
 
-function checkifAllChociesAreMade(){
-  var choices=$(".dropdown-toggle[seed]")
+function checkifAllChociesAreMade() {
+  var choices = $(".dropdown-toggle[seed]")
 
-  if(choices.length == 7){
+  if (choices.length == 7) {
     // enable submit
     $('#submit').prop('disabled', false);
   }
 }
 
-function getPickStringFromUi(){
+function getPickStringFromUi() {
   var picksString = ""
-  var choices=$(".dropdown-toggle[seed]")
+  var choices = $(".dropdown-toggle[seed]")
 
-  choices.each(function( index ) {
-    picksString += $( this ).attr('seed')
+  choices.each(function (index) {
+    picksString += $(this).attr('seed')
   });
 
-  // Get if the picked winner was AFC or NFC
+  // Get if the picked winner was from A or B Bracket
   var winner = $("button[round='SB']").attr('division')
   picksString += winner
 
@@ -260,7 +260,7 @@ function getPickStringFromUi(){
 }
 
 // this is the id of the form
-$("#submissionForm").submit(function(e) {
+$("#submissionForm").submit(function (e) {
 
   e.preventDefault(); // avoid to execute the actual submit of the form.
 
@@ -277,9 +277,8 @@ $("#submissionForm").submit(function(e) {
     type: "POST",
     url: url,
     data: form.serialize(), // serializes the form's elements.
-    success: function(data)
-    {
-      console.log("POST Sent!") 
+    success: function (data) {
+      console.log("POST Sent!")
       $("#message").removeClass('d-none');
 
       // Pull tabs again
