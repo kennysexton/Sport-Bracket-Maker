@@ -185,7 +185,6 @@ function styleAndAppendOptionsIfNeeded(seedString, element, divisionStorage){
 
   if(element.hasAttribute("id")){
     needsDivision = true;
-
   }
 
   for(var j=0; j<seedArray.length; j++){		
@@ -217,7 +216,6 @@ function resetDropdown(element){
 }
 
 function replaceUnusedSeeds(newSeed, tier){
-
   if(tier == 'upper'){
     newSeed = newSeed.replace(/,|1|4|5/g, '');
   } else { //tier = 'lower'
@@ -243,7 +241,6 @@ function checkifAllChociesAreMade(){
   if(choices.length == 7){
     // enable submit
     $('#submit').prop('disabled', false);
-
   }
 }
 

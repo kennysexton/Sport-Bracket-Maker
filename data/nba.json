@@ -2,151 +2,211 @@
     {
       "abr": "ATL",
       "name": "Hawks",
-      "city": "Atlanta"
+      "city": "Atlanta",
+      "cPrim": "#E03A3E",
+      "cSecn": "#C1D32F"
     },
     {
       "abr": "BOS",
       "name": "Celtics",
-      "city": "Boston"
+      "city": "Boston",
+      "cPrim": "#007A33",
+      "cSecn": "#BA9653"
     },
     {
       "abr": "BKN",
       "name": "Nets",
-      "city": "Brooklyn"
+      "city": "Brooklyn",
+      "cPrim": "#000000",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "CHA",
       "name": "Hornets",
-      "city": "Charlotte"
+      "city": "Charlotte",
+      "cPrim": "#1D1160",
+      "cSecn": "#00788C"
     },
     {
       "abr": "CHI",
       "name": "Bulls",
-      "city": "Chicago"
+      "city": "Chicago",
+      "cPrim": "#CE1141",
+      "cSecn": "#000000"
     },
     {
       "abr": "CLE",
       "name": "Cavaliers",
-      "city": "Cleveland"
+      "city": "Cleveland",
+      "cPrim": "#860038",
+      "cSecn": "#FDBB30"
     },
     {
       "abr": "DAL",
       "name": "Mavericks",
-      "city": "Dallas"
+      "city": "Dallas",
+      "cPrim": "#00538C",
+      "cSecn": "#002B5E"
     },
     {
       "abr": "DEN",
       "name": "Nuggets",
-      "city": "Denver"
+      "city": "Denver",
+      "cPrim": "#0E2240",
+      "cSecn": "#FEC524"
     },
     {
       "abr": "DET",
       "name": "Pistons",
-      "city": "Detroit"
+      "city": "Detroit",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "GSW",
       "name": "Warriors",
-      "city": "Golden State"
+      "city": "Golden State",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "HOU",
       "name": "Rockets",
-      "city": "Houston"
+      "city": "Houston",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "IND",
       "name": "Pacers",
-      "city": "Indiana"
+      "city": "Indiana",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "LAC",
       "name": "Clippers",
-      "city": "Los Angeles"
+      "city": "Los Angeles",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "LAL",
       "name": "Lakers",
-      "city": "Los Angeles"
+      "city": "Los Angeles",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "MEM",
       "name": "Grizzlies",
-      "city": "Memphis"
+      "city": "Memphis",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "MIA",
       "name": "Heat",
-      "city": "Miami"
+      "city": "Miami",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "MIL",
       "name": "Bucks",
-      "city": "Milwaukee"
+      "city": "Milwaukee",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "MIN",
       "name": "Timberwolves",
-      "city": "Minnesota"
+      "city": "Minnesota",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "NOP",
       "name": "Pelicans",
-      "city": "New Orleans"
+      "city": "New Orleans",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "NYK",
       "name": "Knicks",
-      "city": "New York"
+      "city": "New York",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "OKC",
       "name": "Thunder",
-      "city": "Oklahoma City"
+      "city": "Oklahoma City",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "ORL",
       "name": "Magic",
-      "city": "Orlando"
+      "city": "Orlando",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "PHI",
       "name": "76ers",
-      "city": "Philadelphia"
+      "city": "Philadelphia",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "PHX",
       "name": "Suns",
-      "city": "Phoenix"
+      "city": "Phoenix",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "POR",
       "name": "Trail Blazers",
-      "city": "Portland"
+      "city": "Portland",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "SAC",
       "name": "Kings",
-      "city": "Sacramento"
+      "city": "Sacramento",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "SAS",
       "name": "Spurs",
-      "city": "San Antonio"
+      "city": "San Antonio",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "TOR",
       "name": "Raptors",
-      "city": "Toronto"
+      "city": "Toronto",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "UTA",
       "name": "Jazz",
-      "city": "Utah"
+      "city": "Utah",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     },
     {
       "abr": "WAS",
       "name": "Wizards",
-      "city": "Washington"
+      "city": "Washington",
+      "cPrim": "#FFFFFF",
+      "cSecn": "#FFFFFF"
     }
   ]
