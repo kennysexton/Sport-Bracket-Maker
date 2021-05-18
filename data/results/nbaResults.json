@@ -4,11 +4,19 @@ results = {
 		"Memphis",
 		"Los Angles*Clippers",
 		"Dallas",
+        "Denver",
+        "Portland",
+        "Phoenix",
+        "Golden State"
 	],
 	"bRound1":[
-		"Philadelphia",
+        "Philadelphia",
 		"Boston",
-		"New York*Knicks",
+		"New York",
 		"Atlanta",
+        "Milwaukee",
+        "Miami",
+        "Brooklyn",
+        "Washington"
 	],
 }
