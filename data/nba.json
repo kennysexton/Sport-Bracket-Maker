@@ -59,154 +59,154 @@
       "abr": "DET",
       "name": "Pistons",
       "city": "Detroit",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#C8102E",
+      "cSecn": "#002D62"
     },
     {
       "abr": "GSW",
       "name": "Warriors",
       "city": "Golden State",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#1D428A",
+      "cSecn": "#FFC72C"
     },
     {
       "abr": "HOU",
       "name": "Rockets",
       "city": "Houston",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#CE1141",
+      "cSecn": "#000000"
     },
     {
       "abr": "IND",
       "name": "Pacers",
       "city": "Indiana",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#002D62",
+      "cSecn": "#FDBB30"
     },
     {
       "abr": "LAC",
       "name": "Clippers",
       "city": "Los Angeles",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#C8102E",
+      "cSecn": "#1D428A"
     },
     {
       "abr": "LAL",
       "name": "Lakers",
       "city": "Los Angeles",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#552583",
+      "cSecn": "#FDB927"
     },
     {
       "abr": "MEM",
       "name": "Grizzlies",
       "city": "Memphis",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#5D76A9",
+      "cSecn": "#12173F"
     },
     {
       "abr": "MIA",
       "name": "Heat",
       "city": "Miami",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#98002E",
+      "cSecn": "#F9A01B"
     },
     {
       "abr": "MIL",
       "name": "Bucks",
       "city": "Milwaukee",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#00471B",
+      "cSecn": "#EEE1C6"
     },
     {
       "abr": "MIN",
       "name": "Timberwolves",
       "city": "Minnesota",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#0C2340",
+      "cSecn": "#236192"
     },
     {
       "abr": "NOP",
       "name": "Pelicans",
       "city": "New Orleans",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#0C2340",
+      "cSecn": "#85714D"
     },
     {
       "abr": "NYK",
       "name": "Knicks",
       "city": "New York",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#006BB6",
+      "cSecn": "#F58426"
     },
     {
       "abr": "OKC",
       "name": "Thunder",
       "city": "Oklahoma City",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#007AC1",
+      "cSecn": "#EF3B24"
     },
     {
       "abr": "ORL",
       "name": "Magic",
       "city": "Orlando",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#0077C0",
+      "cSecn": "#C4CED4"
     },
     {
       "abr": "PHI",
       "name": "76ers",
       "city": "Philadelphia",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#006BB6",
+      "cSecn": "#ED174C"
     },
     {
       "abr": "PHX",
       "name": "Suns",
       "city": "Phoenix",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#1D1160",
+      "cSecn": "#E56020"
     },
     {
       "abr": "POR",
       "name": "Trail Blazers",
       "city": "Portland",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#000000",
+      "cSecn": "#E03A3E"
     },
     {
       "abr": "SAC",
       "name": "Kings",
       "city": "Sacramento",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#5A2D81",
+      "cSecn": "#63727A"
     },
     {
       "abr": "SAS",
       "name": "Spurs",
       "city": "San Antonio",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#000000",
+      "cSecn": "#C4CED4"
     },
     {
       "abr": "TOR",
       "name": "Raptors",
       "city": "Toronto",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#000000",
+      "cSecn": "#CE1141"
     },
     {
       "abr": "UTA",
       "name": "Jazz",
       "city": "Utah",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#002B5C",
+      "cSecn": "#00471B"
     },
     {
       "abr": "WAS",
       "name": "Wizards",
       "city": "Washington",
-      "cPrim": "#FFFFFF",
-      "cSecn": "#FFFFFF"
+      "cPrim": "#002B5C",
+      "cSecn": "#E31837"
     }
   ]
