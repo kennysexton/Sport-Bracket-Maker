@@ -1,0 +1,14 @@
+results = {
+	"afcRound1":[
+		"Utah",
+		"Memphis",
+		"Los Angles*Clippers",
+		"Dallas",
+	],
+	"nfcRound1":[
+		"Philadelphia",
+		"Boston",
+		"New York*Knicks",
+		"Atlanta",
+	],
+}
