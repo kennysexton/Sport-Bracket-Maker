@@ -20,10 +20,10 @@ function newBracketLogic(league) {
 
     var aRound0Array = document.getElementsByClassName("A0");
     var aRound1Array = document.getElementsByClassName("A1");
-    var aRound3Array = document.getElementsByClassName("A3");
+    var aRound2Array = document.getElementsByClassName("A2");
     var bRound0Array = document.getElementsByClassName("B0");
-    var bRound2Array = document.getElementsByClassName("B1");
-    var bRound3Array = document.getElementsByClassName("B3");
+    var bRound1Array = document.getElementsByClassName("B1");
+    var bRound2Array = document.getElementsByClassName("B2");
     var aChampion = document.getElementById("AFinal");
     var bChampion = document.getElementById("BFinal");
 
@@ -40,11 +40,11 @@ function newBracketLogic(league) {
 
     // Round 1
     multipleOptionsPopulate(aRound1Array, aStorageArray)
-    multipleOptionsPopulate(bRound2Array, bStorageArray)
+    multipleOptionsPopulate(bRound1Array, bStorageArray)
 
-    // Round 3 (A Bracket final / B Bracket final)
-    multipleOptionsPopulate(aRound3Array, aStorageArray)
-    multipleOptionsPopulate(bRound3Array, bStorageArray)
+    // Round 2 (NFL - A & B Bracket finals)
+    multipleOptionsPopulate(aRound2Array, aStorageArray)
+    multipleOptionsPopulate(bRound2Array, bStorageArray)
 
     // Championship Game / Super Bowl
     superBowlPopulate(aChampion, aStorageArray)
@@ -138,10 +138,10 @@ function superBowlPopulate(element, divisionStorage) {
 function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
 
   if (round.startsWith("A")) {
-    if (round.endsWith("2")) {
+    if (round.endsWith("1")) {
 
       // Go to A2 relevant object
-      var dropdownElement = $(".A3[default*='" + seed + "']")
+      var dropdownElement = $(".A2[default*='" + seed + "']")
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
       teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
@@ -153,7 +153,7 @@ function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
       // dropdownElement2.attr('seed', seed);
       // teamStyleLogic(afcStorageArray[seed],dropdownElement2.get(0))
 
-    } else if (round.endsWith("3")) {
+    } else if (round.endsWith("2")) {
 
       var dropdownElement = $('#AFinal')
       resetDropdown(dropdownElement.get(0))
@@ -161,14 +161,14 @@ function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
       teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
     }
   } else if (round.startsWith("B")) {
-    if (round.endsWith("2")) {
+    if (round.endsWith("1")) {
       // Go to B2 relevant object
-      var dropdownElement = $(".B3[default*='" + seed + "']")
+      var dropdownElement = $(".B2[default*='" + seed + "']")
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
       teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
 
-    } else if (round.endsWith("3")) {
+    } else if (round.endsWith("2")) {
       var dropdownElement = $('#BFinal')
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
