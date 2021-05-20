@@ -5,10 +5,10 @@
 Tool for making sports playoff brackets.
 
 
-### Sports (only NFL so far)
+### Sports
 - [x] NFL 🏈
-- [ ] NBA 🏀
-- [ ] NHL 🏒
+- [ ] NBA 🏀 (On the way!)
+- [ ] NHL 🏒 (On the way!)
 - [ ] MLS ⚽️
 - [ ] MLB ⚾️
 
