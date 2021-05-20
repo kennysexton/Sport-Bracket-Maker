@@ -3,10 +3,12 @@ var j =  0;
 var successCounter = 0;
 var successCounter = 0;
 
+var league = getLeague();
+
 document.addEventListener("DOMContentLoaded", function(){
 
   // Kick of request for users
-  loadUserTabs();
+  loadUserTabs(league);
 });
 
 // Clear previous data on reload
@@ -19,11 +21,11 @@ function reloadUserTabs(){
 
   // Remove previous tabs
   $('#home-tab').siblings().remove();
-  loadUserTabs();
+  loadUserTabs(league);
 }
 
 // Get users in default order
-function loadUserTabs(){
+function loadUserTabs(league){
   // Grab users JSON data
   const Http = new XMLHttpRequest();
   const url='https://express-api-app.herokuapp.com/users';
@@ -61,7 +63,7 @@ function displayUserTabs(response){
 
     selectorArray[j] = selector
 
-    $(selector).load('htmlSegments/bracket.html', function (response, status) {
+    $(selector).load(`htmlSegments/${league}bracket.html`, function (response, status) {
       //get selector
       if( status == 'success'){
         successCounter++;

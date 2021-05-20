@@ -1,17 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
+  var league = getLeague();
 
   // 0 if pick window is still open
   if (0) {
     leaderBoardLogic()
     $('#submissionForm').hide()
   } else {
-    newBracketLogic()
+    newBracketLogic(league)
   }
 });
 
 // Load default bracket
-function newBracketLogic() {
-  $('#bracket-replace').load('htmlSegments/bracket.html', function () {
+function newBracketLogic(league) {
+  $('#bracket-replace').load(`htmlSegments/${league}bracket.html`, function () {
 
     // Grab team JSON datas
     var teams = parseJson(data)
