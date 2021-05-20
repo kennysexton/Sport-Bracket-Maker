@@ -19,11 +19,11 @@ function newBracketLogic(league) {
     var result = parseJson(results)
 
     var aRound1Array = document.getElementsByClassName("A1");
+    var aRound2Array = document.getElementsByClassName("A2");
     var aRound3Array = document.getElementsByClassName("A3");
-    var aRound4Array = document.getElementsByClassName("A4");
     var bRound1Array = document.getElementsByClassName("B1");
+    var bRound2Array = document.getElementsByClassName("B2");
     var bRound3Array = document.getElementsByClassName("B3");
-    var bRound4Array = document.getElementsByClassName("B4");
     var aChampion = document.getElementById("AFinal");
     var bChampion = document.getElementById("BFinal");
 
@@ -38,13 +38,13 @@ function newBracketLogic(league) {
     var aStorageArray = firstRoundPopulate(aRound1Array, teams, result.aRound1)
     var bStorageArray = firstRoundPopulate(bRound1Array, teams, result.bRound1)
 
-    // Round 3 (Division round)
+    // Round 2 (Division round)
+    multipleOptionsPopulate(aRound2Array, aStorageArray)
+    multipleOptionsPopulate(bRound2Array, bStorageArray)
+
+    // Round 3 (A Bracket final / B Bracket final)
     multipleOptionsPopulate(aRound3Array, aStorageArray)
     multipleOptionsPopulate(bRound3Array, bStorageArray)
-
-    // Round 4 (A Bracket final / B Bracket final)
-    multipleOptionsPopulate(aRound4Array, aStorageArray)
-    multipleOptionsPopulate(bRound4Array, bStorageArray)
 
     // Championship Game / Super Bowl
     superBowlPopulate(aChampion, aStorageArray)
@@ -138,10 +138,10 @@ function superBowlPopulate(element, divisionStorage) {
 function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
 
   if (round.startsWith("A")) {
-    if (round.endsWith("3")) {
+    if (round.endsWith("2")) {
 
-      // Go to A3 relevant object
-      var dropdownElement = $(".A4[default*='" + seed + "']")
+      // Go to A2 relevant object
+      var dropdownElement = $(".A3[default*='" + seed + "']")
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
       teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
@@ -153,7 +153,7 @@ function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
       // dropdownElement2.attr('seed', seed);
       // teamStyleLogic(afcStorageArray[seed],dropdownElement2.get(0))
 
-    } else if (round.endsWith("4")) {
+    } else if (round.endsWith("3")) {
 
       var dropdownElement = $('#AFinal')
       resetDropdown(dropdownElement.get(0))
@@ -161,14 +161,14 @@ function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
       teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
     }
   } else if (round.startsWith("B")) {
-    if (round.endsWith("3")) {
-      // Go to B3 relevant object
-      var dropdownElement = $(".B4[default*='" + seed + "']")
+    if (round.endsWith("2")) {
+      // Go to B2 relevant object
+      var dropdownElement = $(".B3[default*='" + seed + "']")
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
       teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
 
-    } else if (round.endsWith("4")) {
+    } else if (round.endsWith("3")) {
       var dropdownElement = $('#BFinal')
       resetDropdown(dropdownElement.get(0))
       dropdownElement.attr('seed', seed);
