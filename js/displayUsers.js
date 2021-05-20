@@ -87,8 +87,8 @@ function populateReadOnlyBracket(userSubmissions) {
   if(successCounter == tabLength){
     for(var i=0; i< selectorArray.length; i++){
 
-      var aRound1Array = document.getElementsByClassName("A1");
-      var bRound1Array = document.getElementsByClassName("B1");
+      var aRound1Array = document.getElementsByClassName("A0");
+      var bRound1Array = document.getElementsByClassName("B0");
 
       // Grab team JSON datas
       var teams = parseJson(data)
@@ -97,8 +97,8 @@ function populateReadOnlyBracket(userSubmissions) {
       objIndex = getIdFromSelector(selectorArray[i])
 
       // Round 1 (qualified teams)
-      var aStorageArray = firstRoundPopulate(aRound1Array,teams, result.aRound1)
-      var bStorageArray = firstRoundPopulate(bRound1Array,teams, result.bRound1)
+      var aStorageArray = firstRoundPopulate(aRound1Array,teams, result.a)
+      var bStorageArray = firstRoundPopulate(bRound1Array,teams, result.b)
 
       var choicesSelect = selectorArray[i] +" button[round]"
       var choices=$(choicesSelect)

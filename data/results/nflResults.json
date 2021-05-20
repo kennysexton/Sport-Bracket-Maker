@@ -1,11 +1,11 @@
 results = {
-	"aRound1":[
+	"a":[
 		"Kansas City",
 		"Buffalo",
 		"Baltimore",
 		"Cleveland",
 	],
-	"bRound1":[
+	"b":[
 		"Green Bay",
 		"New Orleans",
 		"Tampa Bay",

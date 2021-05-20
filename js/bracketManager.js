@@ -18,11 +18,11 @@ function newBracketLogic(league) {
     var teams = parseJson(data)
     var result = parseJson(results)
 
+    var aRound0Array = document.getElementsByClassName("A0");
     var aRound1Array = document.getElementsByClassName("A1");
-    var aRound2Array = document.getElementsByClassName("A2");
     var aRound3Array = document.getElementsByClassName("A3");
-    var bRound1Array = document.getElementsByClassName("B1");
-    var bRound2Array = document.getElementsByClassName("B2");
+    var bRound0Array = document.getElementsByClassName("B0");
+    var bRound2Array = document.getElementsByClassName("B1");
     var bRound3Array = document.getElementsByClassName("B3");
     var aChampion = document.getElementById("AFinal");
     var bChampion = document.getElementById("BFinal");
@@ -34,12 +34,12 @@ function newBracketLogic(league) {
     // Remove spinner
     $('#spinner').remove();
 
-    // Round 1 (qualified teams)
-    var aStorageArray = firstRoundPopulate(aRound1Array, teams, result.aRound1)
-    var bStorageArray = firstRoundPopulate(bRound1Array, teams, result.bRound1)
+    // Round 0 (list of qualified teams)
+    var aStorageArray = firstRoundPopulate(aRound0Array, teams, result.a)
+    var bStorageArray = firstRoundPopulate(bRound0Array, teams, result.b)
 
-    // Round 2 (Division round)
-    multipleOptionsPopulate(aRound2Array, aStorageArray)
+    // Round 1
+    multipleOptionsPopulate(aRound1Array, aStorageArray)
     multipleOptionsPopulate(bRound2Array, bStorageArray)
 
     // Round 3 (A Bracket final / B Bracket final)

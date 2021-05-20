@@ -1,5 +1,5 @@
 results = {
-	"aRound1":[
+	"a":[
 		"Utah",
 		"Phoenix",
 		"Los Angles*Clippers",
@@ -9,7 +9,7 @@ results = {
 		"Memphis",
         "Golden State"
 	],
-	"bRound1":[
+	"b":[
         "Philadelphia",
 		"Brooklyn",
 		"Milwaukee",
