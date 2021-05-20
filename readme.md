@@ -1,11 +1,14 @@
 # Sport Bracket Maker
 
-Tool for making brackets for American professional sports playoffs.
+![Webpage image](https://imgur.com/F6eZkCy.png)
 
-### Sports (only NFL so far)
+Tool for making sports playoff brackets.
+
+
+### Sports
 - [x] NFL 🏈
-- [ ] NBA 🏀
-- [ ] NHL 🏒
+- [ ] NBA 🏀 (On the way!)
+- [ ] NHL 🏒 (On the way!)
 - [ ] MLS ⚽️
 - [ ] MLB ⚾️
 
@@ -15,7 +18,7 @@ Tool for making brackets for American professional sports playoffs.
 
 **Github pages** - Where the static portion of the application is hosted (html,css,js).
 
-**Heroku** - Used for hosting an API endpoint.  Using [kaffine](http://kaffeine.herokuapp.com/) to keep Heroku from sleeping after 30 minutes of inactivity ([free tier apps do not stay warm](https://express-api-app.herokuapp.com/)).
+**Heroku** - Used for hosting an API endpoint.  Using [Kaffeine](http://kaffeine.herokuapp.com/) to keep Heroku from sleeping after 30 minutes of inactivity ([free tier apps do not stay warm](https://express-api-app.herokuapp.com/)).
 
 <br>
 
