@@ -1,22 +1,22 @@
 results = {
 	"aRound1":[
 		"Utah",
-		"Memphis",
+		"Phoenix",
 		"Los Angles*Clippers",
+		"Denver",
+		"Portland",
 		"Dallas",
-        "Denver",
-        "Portland",
-        "Phoenix",
+		"Memphis",
         "Golden State"
 	],
 	"bRound1":[
         "Philadelphia",
-		"Boston",
-		"New York",
+		"Brooklyn",
+		"Milwaukee",
 		"Atlanta",
-        "Milwaukee",
-        "Miami",
-        "Brooklyn",
+		"Miami",
+		"New York",
+		"Boston",
         "Washington"
 	],
 }
