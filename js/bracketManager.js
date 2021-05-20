@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
   var league = getLeague();
 
   // 0 if pick window is still open
@@ -21,9 +22,13 @@ function newBracketLogic(league) {
     var aRound0Array = document.getElementsByClassName("A0");
     var aRound1Array = document.getElementsByClassName("A1");
     var aRound2Array = document.getElementsByClassName("A2");
+    var aRound3Array = document.getElementsByClassName("A3");
+
     var bRound0Array = document.getElementsByClassName("B0");
     var bRound1Array = document.getElementsByClassName("B1");
     var bRound2Array = document.getElementsByClassName("B2");
+    var bRound3Array = document.getElementsByClassName("B3");
+
     var aChampion = document.getElementById("AFinal");
     var bChampion = document.getElementById("BFinal");
 
@@ -45,6 +50,10 @@ function newBracketLogic(league) {
     // Round 2 (NFL - A & B Bracket finals)
     multipleOptionsPopulate(aRound2Array, aStorageArray)
     multipleOptionsPopulate(bRound2Array, bStorageArray)
+
+    // Round 3 
+    multipleOptionsPopulate(aRound3Array, aStorageArray)
+    multipleOptionsPopulate(bRound3Array, bStorageArray)
 
     // Championship Game / Super Bowl
     superBowlPopulate(aChampion, aStorageArray)
@@ -137,45 +146,63 @@ function superBowlPopulate(element, divisionStorage) {
 // Kicks of future games cascade
 function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
 
-  if (round.startsWith("A")) {
-    if (round.endsWith("1")) {
+  // Get if in A or B division
+  var division = round.charAt(0);
 
-      // Go to A2 relevant object
-      var dropdownElement = $(".A2[default*='" + seed + "']")
-      resetDropdown(dropdownElement.get(0))
-      dropdownElement.attr('seed', seed);
+  if (round.endsWith("1")) {
+
+    // Go to A2 relevant object
+    var dropdownElement = $(`.${division}2[default*='${seed}']`)
+    resetDropdown(dropdownElement.get(0))
+    dropdownElement.attr('seed', seed);
+
+    if (division == 'A') {
       teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
-
-      // TODO: Cascade eliminated team to final game
-      // console.log("test block")
-      // var dropdownElement2 = $("#AFinal")
-      // resetDropdown(dropdownElement2.get(0))
-      // dropdownElement2.attr('seed', seed);
-      // teamStyleLogic(afcStorageArray[seed],dropdownElement2.get(0))
-
-    } else if (round.endsWith("2")) {
-
-      var dropdownElement = $('#AFinal')
-      resetDropdown(dropdownElement.get(0))
-      dropdownElement.attr('seed', seed);
-      teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
-    }
-  } else if (round.startsWith("B")) {
-    if (round.endsWith("1")) {
-      // Go to B2 relevant object
-      var dropdownElement = $(".B2[default*='" + seed + "']")
-      resetDropdown(dropdownElement.get(0))
-      dropdownElement.attr('seed', seed);
-      teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
-
-    } else if (round.endsWith("2")) {
-      var dropdownElement = $('#BFinal')
-      resetDropdown(dropdownElement.get(0))
-      dropdownElement.attr('seed', seed);
+    } else {
       teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
     }
 
-  } else { // round = "Championship Game / Superbowl"
+  } else if (round.endsWith("2")) {
+
+    // IF FOOTBALL
+    if (league == "NFL") {
+      console.log("This is a football bracket")
+      var dropdownElement = $(`#${division}Final`)
+      resetDropdown(dropdownElement.get(0))
+      dropdownElement.attr('seed', seed);
+
+      if (division == 'A') {
+        teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
+      } else {
+        teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
+      }
+    }
+    // IF NBA or NHL 
+    else {
+      // Go to A3 relevant object
+      var dropdownElement = $(`.${division}3[default*='${seed}']`)
+      resetDropdown(dropdownElement.get(0))
+      dropdownElement.attr('seed', seed);
+
+      if (division == 'A') {
+        teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
+      } else {
+        teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
+      }
+    }
+  } else if (round.endsWith("3")) {
+    console.log("This is a NBA or NHL bracket")
+    var dropdownElement = $(`#${division}Final`)
+    resetDropdown(dropdownElement.get(0))
+    dropdownElement.attr('seed', seed);
+
+    if (division == 'A') {
+      teamStyleLogic(aStorageArray[seed], dropdownElement.get(0))
+    } else {
+      teamStyleLogic(bStorageArray[seed], dropdownElement.get(0))
+    }
+  }
+  else { // round = "Championship Game / Superbowl"
     // No action needed.
   }
 }
