@@ -292,9 +292,14 @@ $("#submissionForm").submit(function (e) {
   e.preventDefault(); // avoid to execute the actual submit of the form.
 
   var picksString = getPickStringFromUi();
+  var league = getLeague()
+  // Assume you are filling out the bracket for your current year
+  var year = new Date().getFullYear()
 
-  // Set picks inputs
+  // Set hidden inputs
   $('#picks').val(picksString)
+  $('#league').val(league)
+  $('#year').val(year)
 
   // AJAX Submit
   var form = $(this);
