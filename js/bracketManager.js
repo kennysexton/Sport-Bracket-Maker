@@ -311,7 +311,12 @@ $("#submissionForm").submit(function (e) {
   $.ajax({
     type: "POST",
     url: url,
+    crossDomain: true,  //TODO remove if useless
     data: form.serialize(), // serializes the form's elements.
+    headers: { //TODO remove if useless
+      "accept": "application/json",
+      "Access-Control-Allow-Origin": "*"
+    },
     success: function (data) {
       console.log("POST Sent!")
       $("#message").removeClass('d-none');
