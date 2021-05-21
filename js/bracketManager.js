@@ -163,7 +163,6 @@ function buttonUpdate(seed, round, aStorageArray, bStorageArray) {
     }
 
   } else if (round.endsWith("2")) {
-
     // IF FOOTBALL
     if (league == "NFL") {
       console.log("This is a football bracket")
