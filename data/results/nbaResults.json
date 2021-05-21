@@ -1,0 +1,22 @@
+results = {
+	"a":[
+		"Utah",
+		"Phoenix",
+		"Los Angles*Clippers",
+		"Denver",
+		"Portland",
+		"Dallas",
+		"Memphis",
+        "Golden State"
+	],
+	"b":[
+        "Philadelphia",
+		"Brooklyn",
+		"Milwaukee",
+		"Atlanta",
+		"Miami",
+		"New York",
+		"Boston",
+        "Washington"
+	],
+}
