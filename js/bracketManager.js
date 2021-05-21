@@ -37,7 +37,7 @@ function newBracketLogic(league) {
     var bStorageArray = [];
 
     // Remove spinner
-    $('#spinner').remove();
+    $('#spinner').css('display', 'none');
 
     // Round 0 (list of qualified teams)
     var aStorageArray = firstRoundPopulate(aRound0Array, teams, result.a)
@@ -291,6 +291,9 @@ $("#submissionForm").submit(function (e) {
 
   e.preventDefault(); // avoid to execute the actual submit of the form.
 
+  // Spinner is back
+  $('#spinner').css('display', 'block');
+
   var picksString = getPickStringFromUi();
   var league = getLeague()
   // Assume you are filling out the bracket for your current year
@@ -315,6 +318,11 @@ $("#submissionForm").submit(function (e) {
 
       // Pull tabs again
       reloadUserTabs()
+      $('#spinner').css('display', 'none');
+    },
+    error: function () {
+      console.error("Something went wrong with your submission");
+      $('#spinner').css('display', 'none');
     }
   });
 });
