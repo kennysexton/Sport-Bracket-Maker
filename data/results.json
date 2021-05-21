@@ -1,11 +1,11 @@
 results = {
-	"a":[
+	"afcRound1":[
 		"Kansas City",
 		"Buffalo",
 		"Baltimore",
 		"Cleveland",
 	],
-	"b":[
+	"nfcRound1":[
 		"Green Bay",
 		"New Orleans",
 		"Tampa Bay",

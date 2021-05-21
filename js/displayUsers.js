@@ -3,12 +3,10 @@ var j =  0;
 var successCounter = 0;
 var successCounter = 0;
 
-var league = getLeague();
-
 document.addEventListener("DOMContentLoaded", function(){
 
   // Kick of request for users
-  loadUserTabs(league);
+  loadUserTabs();
 });
 
 // Clear previous data on reload
@@ -21,11 +19,11 @@ function reloadUserTabs(){
 
   // Remove previous tabs
   $('#home-tab').siblings().remove();
-  loadUserTabs(league);
+  loadUserTabs();
 }
 
 // Get users in default order
-function loadUserTabs(league){
+function loadUserTabs(){
   // Grab users JSON data
   const Http = new XMLHttpRequest();
   const url='https://express-api-app.herokuapp.com/users';
@@ -63,7 +61,7 @@ function displayUserTabs(response){
 
     selectorArray[j] = selector
 
-    $(selector).load(`htmlSegments/${league}bracket.html`, function (response, status) {
+    $(selector).load('htmlSegments/bracket.html', function (response, status) {
       //get selector
       if( status == 'success'){
         successCounter++;
@@ -87,8 +85,8 @@ function populateReadOnlyBracket(userSubmissions) {
   if(successCounter == tabLength){
     for(var i=0; i< selectorArray.length; i++){
 
-      var aRound1Array = document.getElementsByClassName("A0");
-      var bRound1Array = document.getElementsByClassName("B0");
+      var afcRound1Array = document.getElementsByClassName("AFC");
+      var nfcRound1Array = document.getElementsByClassName("NFC");
 
       // Grab team JSON datas
       var teams = parseJson(data)
@@ -97,8 +95,8 @@ function populateReadOnlyBracket(userSubmissions) {
       objIndex = getIdFromSelector(selectorArray[i])
 
       // Round 1 (qualified teams)
-      var aStorageArray = firstRoundPopulate(aRound1Array,teams, result.a)
-      var bStorageArray = firstRoundPopulate(bRound1Array,teams, result.b)
+      var afcStorageArray = firstRoundPopulate(afcRound1Array,teams, result.afcRound1)
+      var nfcStorageArray = firstRoundPopulate(nfcRound1Array,teams, result.nfcRound1)
 
       var choicesSelect = selectorArray[i] +" button[round]"
       var choices=$(choicesSelect)
@@ -127,14 +125,14 @@ function populateReadOnlyBracket(userSubmissions) {
         // AFC
         if(index == 3){
           if(winnerDivision == 'A'){
-            teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
+            teamStyleLogic(afcStorageArray[currentSeed], $(this).get(0))
           } else {
-            teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
+            teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
           }
         } else if (index == 0 || index == 2 || index == 5){ //AFC
-          teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
+          teamStyleLogic(afcStorageArray[currentSeed], $(this).get(0))
         } else {
-          teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
+          teamStyleLogic(nfcStorageArray[currentSeed], $(this).get(0))
         }
 
         // Show if picks are correct or wrong
