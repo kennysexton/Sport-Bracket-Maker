@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // A backet is open when the h1 element has the 'open' attribute
   if (!open) {
-    leaderBoardLogic()
+    leaderboardLogic(league)
     $('#submissionForm').hide()
   } else {
     newBracketLogic(league)
