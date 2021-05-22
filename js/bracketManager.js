@@ -2,8 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var league = getLeague();
 
-  // 0 if pick window is still open
-  if (0) {
+  // See if league is marked as open
+  var open = $('h1')[0].hasAttribute('open')
+  console.log(open)
+
+  // A backet is open when the h1 element has the 'open' attribute
+  if (!open) {
     leaderBoardLogic()
     $('#submissionForm').hide()
   } else {

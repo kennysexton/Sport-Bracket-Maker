@@ -28,15 +28,21 @@ function reloadUserTabs(){
 function loadUserTabs(league){
   // Grab users JSON data
   const Http = new XMLHttpRequest();
-  const url='https://express-api-app.herokuapp.com/users';
-  Http.open("GET", url, true);
-  Http.send();
+
+  // TODO: Needs to be replaced with a dropdown
+  var year = $('#year').text()
+
+  const query= `?league=${league}&year=${year}`
+  const url= `https://express-api-app.herokuapp.com/users${query}`
+  Http.open("GET", url, true)
+  Http.send()
 
   Http.onreadystatechange =function(){
     if (Http.readyState == 4 && Http.status == 200){
       displayUserTabs(Http.responseText)
-    } 
+    }
   }
+  console.log(`grabbing users that match: ${query}`)
 }
 
 // Logic for appending HTML
