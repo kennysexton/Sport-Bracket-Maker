@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // A backet is open when the h1 element has the 'open' attribute
   if (!open) {
-    leaderBoardLogic()
+    leaderboardLogic(league)
     $('#submissionForm').hide()
   } else {
     newBracketLogic(league)
@@ -269,8 +269,10 @@ function checkifAllChociesAreMade() {
   var choices = $(".dropdown-toggle[seed]")
   var possibleChoices = $(".dropdown-toggle")
 
+  $('#num-choices-made').text(`${choices.length} out of ${possibleChoices.length} picked`)
+
   if (choices.length == possibleChoices.length) {
-    console.log(`${choices.length} out of ${possibleChoices.length} made  `)
+    $('#num-choices-made').text(`${choices.length} out of ${possibleChoices.length} picked \u2705`)
     // enable submit
     $('#submit').prop('disabled', false);
   }
