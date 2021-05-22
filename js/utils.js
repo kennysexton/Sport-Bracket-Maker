@@ -82,6 +82,6 @@ function getPercentage(part, total) {
 
 // Get the league using the url ex.) url.com/nba.html -> NBA
 function getLeague() {
-  var league = location.pathname.split("/")[1]
+  var league = location.pathname.split("/").pop();
   return league.split(".")[0].toUpperCase()
 }
