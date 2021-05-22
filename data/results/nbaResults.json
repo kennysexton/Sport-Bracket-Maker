@@ -2,20 +2,20 @@ results = {
 	"a":[
 		"Utah",
 		"Phoenix",
-		"Los Angles*Clippers",
 		"Denver",
-		"Portland",
+		"Los Angles*Clippers",
 		"Dallas",
-		"Memphis",
-        "Golden State"
+		"Portland",
+		"Los Angles*Lakers",
+		"Memphis"
 	],
 	"b":[
         "Philadelphia",
 		"Brooklyn",
 		"Milwaukee",
+		"New York",
 		"Atlanta",
 		"Miami",
-		"New York",
 		"Boston",
         "Washington"
 	],
