@@ -1,4 +1,4 @@
-button{ 
+button {
   border: 0px;
 }
 
@@ -18,7 +18,7 @@ button{
   border-radius: 0px 0px 6px 6px;
 }
 
-.drop-item{ 
+.drop-item {
   white-space: nowrap;
   background-color: #444;
 }
@@ -38,17 +38,17 @@ p {
   margin-bottom: 5px;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   padding: 5px;
   background: #F8F8F8;
   border-radius: 5px;
-  box-shadow: 3px 12px 15px rgba(0, 0, 0, 0.3); 
-  -webkit-box-shadow: 3px 12px 15px rgba(0, 0, 0, 0.3); 
+  box-shadow: 3px 12px 15px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 3px 12px 15px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 3px 12px 15px rgba(0, 0, 0, 0.3);
 }
 
 a {
-  color : #3B4247 !important;
+  color: #3B4247 !important;
   font-weight: 500;
 }
 
@@ -81,35 +81,35 @@ h1 {
   padding: 20px
 }
 
-.wip{
+.wip {
   background-color: #ffffff;
   opacity: 20%;
-  pointer-events:none
+  pointer-events: none
 }
 
-.hide  {
-  display:none
+.hide {
+  display: none
 }
 
-.row{
+.row {
   margin-top: 1.5%;
   margin-bottom: 1.5%;
 }
 
-#name{
+#name {
   width: auto;
 }
 
-.correct{
-  border-left: 6px solid green; !important
+.correct {
+  border-left: 6px solid green;
+  !important
 }
 
 .correct #line {
   border-bottom-left-radius: 0px;
-
 }
 
-.wrong{
+.wrong {
   border-left: 6px solid red;
 }
 
@@ -117,8 +117,21 @@ h1 {
   border-bottom-left-radius: 0px;
 }
 
-.btn-group : hover{
-	border: none;
+.btn-group: hover {
+  border: none;
+}
+
+.home-button {
+  width: 15px;
+  margin: 5px;
+}
+
+.home-text {
+  margin: 5px;
+}
+
+.top-row {
+  display: flex;
 }
 
 @media only screen and (max-width: 960px) {
