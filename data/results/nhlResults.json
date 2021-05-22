@@ -1,0 +1,22 @@
+results = {
+	"a":[
+		"Toronto",
+		"Vegas",
+		"Colorado",
+		"Edmonton",
+		"Winnipeg",
+		"St. Louis",
+		"Minnesota",
+		"Montréal",
+	],
+	"b":[
+        "Pittsburgh",
+		"Florida",
+		"Carolina",
+		"Washington",
+		"Boston",
+		"Nashville",
+		"Tampa Bay",
+        "New York*Islanders"
+	],
+}

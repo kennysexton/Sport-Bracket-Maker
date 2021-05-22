@@ -7,8 +7,8 @@ Tool for making sports playoff brackets.
 
 ### Sports
 - [x] NFL 🏈
-- [ ] NBA 🏀 (On the way!)
-- [ ] NHL 🏒 (On the way!)
+- [x] NBA 🏀
+- [x] NHL 🏒
 - [ ] MLS ⚽️
 - [ ] MLB ⚾️
 
