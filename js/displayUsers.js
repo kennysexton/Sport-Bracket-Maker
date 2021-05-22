@@ -1,21 +1,21 @@
 var selectorArray = [];
-var j =  0;
+var j = 0;
 var successCounter = 0;
 var successCounter = 0;
 
 var league = getLeague();
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
 
   // Kick of request for users
   loadUserTabs(league);
 });
 
 // Clear previous data on reload
-function reloadUserTabs(){
+function reloadUserTabs() {
   // Start with zeros out variables
   selectorArray = [];
-  j =  0;
+  j = 0;
   successCounter = 0;
   successCounter = 0;
 
@@ -25,20 +25,20 @@ function reloadUserTabs(){
 }
 
 // Get users in default order
-function loadUserTabs(league){
+function loadUserTabs(league) {
   // Grab users JSON data
   const Http = new XMLHttpRequest();
 
   // TODO: Needs to be replaced with a dropdown
   var year = $('#year').text()
 
-  const query= `?league=${league}&year=${year}`
-  const url= `https://express-api-app.herokuapp.com/users${query}`
+  const query = `?league=${league}&year=${year}`
+  const url = `https://express-api-app.herokuapp.com/users${query}`
   Http.open("GET", url, true)
   Http.send()
 
-  Http.onreadystatechange =function(){
-    if (Http.readyState == 4 && Http.status == 200){
+  Http.onreadystatechange = function () {
+    if (Http.readyState == 4 && Http.status == 200) {
       displayUserTabs(Http.responseText)
     }
   }
@@ -46,7 +46,7 @@ function loadUserTabs(league){
 }
 
 // Logic for appending HTML
-function displayUserTabs(response){
+function displayUserTabs(response) {
   userSubmissions = JSON.parse(response)
   console.log(userSubmissions)
 
@@ -54,24 +54,24 @@ function displayUserTabs(response){
   console.log("Number of user tabs: " + tabLength)
 
   //   itirate over keys
-  for(i=0; i< tabLength; i++) { 
+  for (i = 0; i < tabLength; i++) {
     var user = userSubmissions[i];
     var name = user.name
     var nameNoSpaces = cleanInput(name)
 
     // Create a tab per submission
-    $("#myTab").append("<a class='nav-link nav-item user' id='"+nameNoSpaces+"-tab' data-toggle='tab' href='#"+nameNoSpaces+"' role='tab' aria-controls='"+nameNoSpaces+"' aria-selected='false'>"+name+"</a>")
+    $("#myTab").append("<a class='nav-link nav-item user' id='" + nameNoSpaces + "-tab' data-toggle='tab' href='#" + nameNoSpaces + "' role='tab' aria-controls='" + nameNoSpaces + "' aria-selected='false'>" + name + "</a>")
 
-    $("#myTabContent").append("<div class='tab-pane fade' id='"+nameNoSpaces+"' role='tabpanel' aria-labelledby='"+nameNoSpaces+"-tab'><div id='bracket-viewonly-replace-"+nameNoSpaces+"' class='text-center'></div></div>")
+    $("#myTabContent").append("<div class='tab-pane fade' id='" + nameNoSpaces + "' role='tabpanel' aria-labelledby='" + nameNoSpaces + "-tab'><div id='bracket-viewonly-replace-" + nameNoSpaces + "' class='text-center'></div></div>")
 
     // Populate dropdowns with the previously selected result
-    var selector = '#bracket-viewonly-replace-' +nameNoSpaces;
+    var selector = '#bracket-viewonly-replace-' + nameNoSpaces;
 
     selectorArray[j] = selector
 
     $(selector).load(`htmlSegments/${league}bracket.html`, function (response, status) {
       //get selector
-      if( status == 'success'){
+      if (status == 'success') {
         successCounter++;
       } else {
         console.error("failed to load a bracket in one of the tabs")
@@ -90,8 +90,8 @@ function displayUserTabs(response){
 function populateReadOnlyBracket(userSubmissions) {
 
   // Only run after all load events have passed
-  if(successCounter == tabLength){
-    for(var i=0; i< selectorArray.length; i++){
+  if (successCounter == tabLength) {
+    for (var i = 0; i < selectorArray.length; i++) {
 
       var aRound1Array = document.getElementsByClassName("A0");
       var bRound1Array = document.getElementsByClassName("B0");
@@ -103,23 +103,27 @@ function populateReadOnlyBracket(userSubmissions) {
       objIndex = getIdFromSelector(selectorArray[i])
 
       // Round 1 (qualified teams)
-      var aStorageArray = firstRoundPopulate(aRound1Array,teams, result.a)
-      var bStorageArray = firstRoundPopulate(bRound1Array,teams, result.b)
+      var aStorageArray = firstRoundPopulate(aRound1Array, teams, result.a)
+      var bStorageArray = firstRoundPopulate(bRound1Array, teams, result.b)
 
-      var choicesSelect = selectorArray[i] +" button[round]"
-      var choices=$(choicesSelect)
+      var choicesSelect = selectorArray[i] + " button[round]"
+      var choices = $(choicesSelect)
 
 
       // Check that submissions are in the correct format
-      if(userSubmissions[i].picks.length == 8){
-        var winnerDivision = userSubmissions[i].picks.charAt(7) 
-        } else {
-          console.error("User submission: " + objIndex + " is not the correct length")
-        }
+      if (userSubmissions[i].picks.length >= 8) {
+        var winnerDivision = userSubmissions[i].picks.charAt(userSubmissions[i].picks.length - 1)
+      } else {
+        console.error("User submission: " + objIndex + " is too short")
+      }
 
-      choices.each(function(index) {
+      // Middle Element will be the final game
+      var middleElement = Math.floor((userSubmissions[i].picks.length - 1) / 2)
 
-        var currentSeed = userSubmissions[i].picks.charAt(index) 
+
+      choices.each(function (index) {
+
+        var currentSeed = userSubmissions[i].picks.charAt(index)
         $(this).attr('seed', currentSeed)
 
         // Remove some classes & attributes
@@ -130,21 +134,38 @@ function populateReadOnlyBracket(userSubmissions) {
         $(this).removeClass('btn-danger')
         $(this).removeClass('btn-primary')
 
-        // AFC
-        if(index == 3){
-          if(winnerDivision == 'A'){
+        // TODO: Want to improve this if possible
+        // Maybe pop middle value of list.  Then style the rest based on even or odd
+        if(league == 'NFL') {
+          console.log("displaying NFL")
+          if (index == middleElement) {
+            if (winnerDivision == 'A') {
+              teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
+            } else {
+              teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
+            }
+          } else if (index == 0 || index == 2 || index == 5) { //AFC
             teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
           } else {
             teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
           }
-        } else if (index == 0 || index == 2 || index == 5){ //AFC
-          teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
         } else {
-          teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
+          if (index == middleElement) {
+            if (winnerDivision == 'A') {
+              teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
+            } else {
+              teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
+            }
+          } else if (index == 0 || index == 2 || index == 4 || index == 6 || index == 9 || index == 11 || index == 13) { //A
+            teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))
+          } else {
+            teamStyleLogic(bStorageArray[currentSeed], $(this).get(0))
+          }
         }
 
+
         // Show if picks are correct or wrong
-        switch(userSubmissions[i].style[index]){
+        switch (userSubmissions[i].style[index]) {
           case 1: $(this).addClass('correct')
             break;
           case 2: $(this).addClass('wrong')
@@ -157,6 +178,6 @@ function populateReadOnlyBracket(userSubmissions) {
   }
 }
 
-function getIdFromSelector(selectorString){
+function getIdFromSelector(selectorString) {
   return selectorString.split('-').pop()
 }
