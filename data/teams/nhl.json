@@ -138,12 +138,6 @@ data = [
         "cSecn": "#FCB514",
     },
     {
-        "name": "Blues",
-        "city": "St. Louis",
-        "cPrim": "#002F87",
-        "cSecn": "#FCB514",
-    },
-    {
         "name": "Sharks",
         "city": "San Jose",
         "cPrim": "#006D75",
@@ -154,6 +148,12 @@ data = [
         "city": "Seattle",
         "cPrim": "#001628",
         "cSecn": "#99D9D9",
+    },
+    {
+        "name": "Blues",
+        "city": "St. Louis",
+        "cPrim": "#002F87",
+        "cSecn": "#FCB514",
     },
     {
         "name": "Lightning",
