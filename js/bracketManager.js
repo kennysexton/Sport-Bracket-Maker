@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // See if league is marked as open
   var open = $('h1')[0].hasAttribute('open')
-  console.log(open)
 
   // A backet is open when the h1 element has the 'open' attribute
   if (!open) {
@@ -268,8 +267,10 @@ function replaceUnusedSeeds(newSeed, tier) {
 
 function checkifAllChociesAreMade() {
   var choices = $(".dropdown-toggle[seed]")
+  var possibleChoices = $(".dropdown-toggle")
 
-  if (choices.length == 7) {
+  if (choices.length == possibleChoices.length) {
+    console.log(`${choices.length} out of ${possibleChoices.length} made  `)
     // enable submit
     $('#submit').prop('disabled', false);
   }
@@ -286,6 +287,8 @@ function getPickStringFromUi() {
   // Get if the picked winner was from A or B Bracket
   var winner = $("button[round='SB']").attr('division')
   picksString += winner
+
+  console.log(picksString)
 
   return picksString
 }
@@ -306,7 +309,9 @@ $("#submissionForm").submit(function (e) {
   // Set hidden inputs
   $('#picks').val(picksString)
   $('#league').val(league)
-  $('#year').val(year)
+  $('#bracketYear').val(year)
+
+  console.log(`submiting ${picksString}, ${league}, ${year}`)
 
   // AJAX Submit
   var form = $(this);

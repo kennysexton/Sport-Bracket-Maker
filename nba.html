@@ -61,11 +61,13 @@
 
 
           <!-- New Submission Form -->
-          <form  id="submissionForm" class="mb-5" action="https://express-api-app.herokuapp.com/users"
+          <form  id="submissionForm" class="mb-5" action="http://localhost:3000/users"
                 method="POST">
             <div class="form-inline mt-5 mb-5 d-flex justify-content-center">
               <input type="name" name="name" class="form-control" id="name" placeholder="Bracket Name" required pattern="[a-zA-Z0-9\s]{1,30}" title="Only numbers, letters, and spaces.  Length (1-30)">
               <input id="picks" type="text" name="picks" class="hide">
+              <input id="league" type="text" name="league" class="hide">
+              <input id="bracketYear" type="number" name="year" class="hide">
               <button type="submit" id="submit" class="btn btn-primary" disabled data-toggle="tooltip" data-placement="top" title="Enabled once all picks are made">Submit</button>
             </div>
           </form>
