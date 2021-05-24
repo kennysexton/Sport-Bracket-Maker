@@ -6,7 +6,6 @@ function leaderboardLogic(league) {
   var year = $('#year').text()
   console.log(`Using leaderboard: ${league} | ${year}`)
   const url = `https://express-api-app.herokuapp.com/users?league=${league}&year=${year}&sort=-1`;
-  // const url = `https://express-api-app.herokuapp.com/users?sort=-1`;
 
   $('#bracket-replace').load('htmlSegments/leaderboard.html', function () {
     // Change tab
