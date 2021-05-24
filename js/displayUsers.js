@@ -42,7 +42,7 @@ function loadUserTabs(league) {
       displayUserTabs(Http.responseText)
     }
   }
-  console.log(`grabbing users that match: ${query}`)
+  console.log(`Grabbing users: ${league} | ${year}`)
 }
 
 // Logic for appending HTML
@@ -137,7 +137,6 @@ function populateReadOnlyBracket(userSubmissions) {
         // TODO: Want to improve this if possible
         // Maybe pop middle value of list.  Then style the rest based on even or odd
         if(league == 'NFL') {
-          console.log("displaying NFL")
           if (index == middleElement) {
             if (winnerDivision == 'A') {
               teamStyleLogic(aStorageArray[currentSeed], $(this).get(0))

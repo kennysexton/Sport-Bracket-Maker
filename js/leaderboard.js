@@ -3,9 +3,9 @@ var total = 0, correct = 0, wrong = 0;
 function leaderboardLogic(league) {
 
   // TODO: Needs to be replaced,
-  // var year = $('#year').text()
-  // const url = `https://express-api-app.herokuapp.com/users?league=${league}&year=${year}sort=-1`;
-  const url = `https://express-api-app.herokuapp.com/users?sort=-1`;
+  var year = $('#year').text()
+  console.log(`Using leaderboard: ${league} | ${year}`)
+  const url = `https://express-api-app.herokuapp.com/users?league=${league}&year=${year}&sort=-1`;
 
   $('#bracket-replace').load('htmlSegments/leaderboard.html', function () {
     // Change tab
