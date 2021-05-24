@@ -4,7 +4,7 @@ function leaderboardLogic(league) {
 
   // TODO: Needs to be replaced,
   var year = $('#year').text()
-  console.log(`${league} , ${year}`)
+  console.log(`Using leaderboard: ${league} | ${year}`)
   const url = `https://express-api-app.herokuapp.com/users?league=${league}&year=${year}&sort=-1`;
   // const url = `https://express-api-app.herokuapp.com/users?sort=-1`;
 
