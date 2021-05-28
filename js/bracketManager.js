@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     newBracketLogic(league)
   }
+
+  loadUserTabs(league);
 });
 
 // Load default bracket
