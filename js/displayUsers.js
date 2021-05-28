@@ -5,12 +5,6 @@ var successCounter = 0;
 
 var league = getLeague();
 
-document.addEventListener("DOMContentLoaded", function () {
-
-  // Kick of request for users
-  loadUserTabs(league);
-});
-
 // Clear previous data on reload
 function reloadUserTabs() {
   // Start with zeros out variables
@@ -32,7 +26,8 @@ function loadUserTabs(league) {
   // TODO: Needs to be replaced with a dropdown
   var year = $('#year').text()
 
-  const query = `?league=${league}&year=${year}`
+  //TODO: No need for duplicate api calls
+  const query = `?league=${league}&year=${year}&sort=-1`
   const url = `https://express-api-app.herokuapp.com/users${query}`
   Http.open("GET", url, true)
   Http.send()
