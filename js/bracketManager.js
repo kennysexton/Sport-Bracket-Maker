@@ -1,15 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   var league = getLeague();
+  var year = getYear();
+
+  // Set header text
+  $('#year').text(year)
 
   // See if league is marked as open
   var open = $('h1')[0].hasAttribute('open')
 
   // A backet is open when the h1 element has the 'open' attribute
   if (!open) {
+    console.log(`bracket is not open for submissions at this time`)
+
     leaderboardLogic(league)
     $('#submissionForm').hide()
   } else {
+    console.log(`bracket is not open for submissions`)
+    
     newBracketLogic(league)
   }
 
@@ -307,8 +315,7 @@ $("#submissionForm").submit(function (e) {
 
   var picksString = getPickStringFromUi();
   var league = getLeague()
-  // Assume you are filling out the bracket for your current year
-  var year = new Date().getFullYear()
+  var year = getYear()
 
   // Set hidden inputs
   $('#picks').val(picksString)

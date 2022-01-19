@@ -2,8 +2,8 @@ var total = 0, correct = 0, wrong = 0;
 
 function leaderboardLogic(league) {
 
-  // TODO: Needs to be replaced,
-  var year = $('#year').text()
+  var year = getYear()
+
   console.log(`Using leaderboard: ${league} | ${year}`)
   const url = `https://express-api-app.herokuapp.com/users?league=${league}&year=${year}&sort=-1`;
 

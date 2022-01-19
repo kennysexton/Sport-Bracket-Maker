@@ -23,8 +23,10 @@ function loadUserTabs(league) {
   // Grab users JSON data
   const Http = new XMLHttpRequest();
 
-  // TODO: Needs to be replaced with a dropdown
-  var year = $('#year').text()
+  var year = getYear()
+
+  // Load in the teams that are in the playoffs
+  loadTeamScript(year, league)
 
   //TODO: No need for duplicate api calls
   const query = `?league=${league}&year=${year}&sort=-1`
@@ -48,7 +50,7 @@ function displayUserTabs(response) {
   tabLength = Object.keys(userSubmissions).length
   console.log("Number of user tabs: " + tabLength)
 
-  //   itirate over keys
+  // itirate over keys
   for (i = 0; i < tabLength; i++) {
     var user = userSubmissions[i];
     var name = user.name
@@ -109,12 +111,11 @@ function populateReadOnlyBracket(userSubmissions) {
       if (userSubmissions[i].picks.length >= 8) {
         var winnerDivision = userSubmissions[i].picks.charAt(userSubmissions[i].picks.length - 1)
       } else {
-        console.error("User submission: " + objIndex + " is too short")
+        console.error(`User submission: ${objIndex} is too short`)
       }
 
       // Middle Element will be the final game
       var middleElement = Math.floor((userSubmissions[i].picks.length - 1) / 2)
-
 
       choices.each(function (index) {
 
@@ -174,4 +175,13 @@ function populateReadOnlyBracket(userSubmissions) {
 
 function getIdFromSelector(selectorString) {
   return selectorString.split('-').pop()
+}
+
+// Insert a script tag dynamically so that the correct teams are used for the given year/league
+function loadTeamScript(year, league){
+  var s = document.createElement("script");
+  s.type = "text/javascript";
+  s.src = `data/results/${league}/${year}.json`
+  s.innerHTML = null;
+  document.getElementById("script-insert").appendChild(s);
 }
