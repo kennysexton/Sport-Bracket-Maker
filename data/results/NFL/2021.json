@@ -1,14 +1,14 @@
 results = {
 	"a":[
-		"Tennesse",
+		"Tennessee",
 		"Kansas City",
 		"Buffalo",
-		"Cincinatti",
+		"Cincinnati",
 	],
 	"b":[
 		"Green Bay",
 		"Tampa Bay",
-		"Las Angeles*Rams",
-		"San Fransico",
+		"Los Angeles*Rams",
+		"San Francisco",
 	],
 }
