@@ -9,16 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // See if league is marked as open
   var open = $('h1')[0].hasAttribute('open')
 
-  // A backet is open when the h1 element has the 'open' attribute
-  if (!open) {
-    console.log(`bracket is not open for submissions at this time`)
+  // A backet is open when the h1 element has the 'open' attribute, and it is the current year
+  if (open && year == new Date().getFullYear()) {
+    console.log(`This bracket is open for submissions`)
+    
+    newBracketLogic(league)
+  } else {
+    console.log(`This bracket is NOT open for submissions`)
 
     leaderboardLogic(league)
     $('#submissionForm').hide()
-  } else {
-    console.log(`bracket is not open for submissions`)
-    
-    newBracketLogic(league)
   }
 
   loadUserTabs(league);
