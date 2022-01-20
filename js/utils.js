@@ -85,3 +85,9 @@ function getLeague() {
   var league = location.pathname.split("/").pop();
   return league.split(".")[0].toUpperCase()
 }
+
+// Get the year sing the url ex.) url.com/nba.html?year=2021 -> NBA
+function getYear() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("year");
+}
