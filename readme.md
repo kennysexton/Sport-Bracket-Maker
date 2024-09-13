@@ -18,7 +18,7 @@ Tool for making sports playoff brackets.
 
 **Github pages** - Where the static portion of the application is hosted (html,css,js).
 
-**Heroku** - Used for hosting the [API endpoint](https://github.com/kennysexton/express-api-server).  Using [Kaffeine](http://kaffeine.herokuapp.com/) to keep Heroku from sleeping after 30 minutes of inactivity.
+**Heroku** - Used for hosting my custom built [API endpoint](https://github.com/kennysexton/express-api-server).  ~~Using [Kaffeine](http://kaffeine.herokuapp.com/) to keep Heroku from sleeping after 30 minutes of inactivity~~.
 
 <br>
 
